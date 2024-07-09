@@ -1,0 +1,15 @@
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\bin\Debug\net8.0\BookLibrary.Models.deps.json
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\bin\Debug\net8.0\BookLibrary.Models.runtimeconfig.json
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\bin\Debug\net8.0\BookLibrary.Models.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\bin\Debug\net8.0\BookLibrary.Models.pdb
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.csproj.AssemblyReference.cache
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.AssemblyInfoInputs.cache
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.AssemblyInfo.cs
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.csproj.CoreCompileInputs.cache
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.sourcelink.json
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\refint\BookLibrary.Models.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.pdb
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\BookLibrary.Models.genruntimeconfig.cache
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Models\obj\Debug\net8.0\ref\BookLibrary.Models.dll

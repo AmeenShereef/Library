@@ -1,0 +1,67 @@
+2024-07-09 10:35:24.606 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2024-07-09 10:35:24.671 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2024-07-09 10:35:24.675 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2024-07-09 10:35:24.676 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-07-09 10:35:24.683 +05:30 [INF] Applying migration '20240709050343_InitialCreate'.
+2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "APILog" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_APILog" PRIMARY KEY AUTOINCREMENT,
+    "Path" TEXT NULL,
+    "QueryString" TEXT NULL,
+    "Method" TEXT NULL,
+    "UserAgent" TEXT NULL,
+    "Host" TEXT NULL,
+    "UserId" INTEGER NULL,
+    "Headers" TEXT NULL
+);
+2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ExceptionLogs" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ExceptionLogs" PRIMARY KEY AUTOINCREMENT,
+    "CreatedOn" TEXT NOT NULL,
+    "Source" TEXT NULL,
+    "TargetSite" TEXT NULL,
+    "Message" TEXT NULL,
+    "StackTrace" TEXT NULL,
+    "Path" TEXT NULL,
+    "QueryString" TEXT NULL,
+    "Body" TEXT NULL,
+    "UserAgent" TEXT NULL
+);
+2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Roles" (
+    "RoleId" INTEGER NOT NULL CONSTRAINT "PK_Roles" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL
+);
+2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Users" (
+    "UserId" INTEGER NOT NULL CONSTRAINT "PK_Users" PRIMARY KEY AUTOINCREMENT,
+    "Email" TEXT NOT NULL,
+    "IsActive" INTEGER NULL,
+    "DisplayName" TEXT NULL,
+    "Password" TEXT NULL,
+    "RoleId" INTEGER NOT NULL,
+    "RegistrationCode" TEXT NULL,
+    "RegistrationCodeTime" TEXT NULL,
+    "AccessToken" TEXT NULL,
+    "RefreshToken" TEXT NULL,
+    "LastLoginTime" TEXT NULL,
+    "CreationTime" TEXT NULL,
+    "CreatorUserId" INTEGER NULL,
+    "LastModificationTime" TEXT NULL,
+    "LastModifierUserId" INTEGER NULL,
+    CONSTRAINT "FK_Users_Roles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "Roles" ("RoleId") ON DELETE CASCADE
+);
+2024-07-09 10:35:24.701 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Users_RoleId" ON "Users" ("RoleId");
+2024-07-09 10:35:24.701 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240709050343_InitialCreate', '8.0.6');

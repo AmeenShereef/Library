@@ -4,14 +4,130 @@
     "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj": {
+    "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Data\\BookLibrary.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj",
-        "projectName": "BookLibrary.Repositories",
-        "projectPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Data\\BookLibrary.Data.csproj",
+        "projectName": "BookLibrary.Data",
+        "projectPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Data\\BookLibrary.Data.csproj",
         "packagesPath": "C:\\Users\\yasee.H2I_LT_010\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\obj\\",
+        "outputPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yasee.H2I_LT_010\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Infrastructure\\BookLibrary.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Infrastructure\\BookLibrary.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.2, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[6.6.1, )"
+            },
+            "Serilog.Sinks.SQLite": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Infrastructure\\BookLibrary.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Infrastructure\\BookLibrary.Infrastructure.csproj",
+        "projectName": "BookLibrary.Infrastructure",
+        "projectPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Infrastructure\\BookLibrary.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\yasee.H2I_LT_010\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yasee.H2I_LT_010\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,9 +177,13 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -75,17 +195,137 @@
               "target": "Package",
               "version": "[8.0.1, )"
             },
-            "Serilog.Sinks.Console": {
+            "Serilog.Extensions.Logging": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[8.0.0, )"
             },
             "Serilog.Sinks.MSSqlServer": {
               "target": "Package",
               "version": "[6.6.1, )"
             },
-            "Serilog.Sinks.PeriodicBatching": {
+            "Serilog.Sinks.SQLite": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj",
+        "projectName": "BookLibrary.Repositories",
+        "projectPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\BookLibrary.Repositories.csproj",
+        "packagesPath": "C:\\Users\\yasee.H2I_LT_010\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yasee.H2I_LT_010\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Data\\BookLibrary.Data.csproj": {
+                "projectPath": "C:\\Users\\yasee.H2I_LT_010\\source\\repos\\AmeenShereef\\Library\\BookLibrary\\BookLibrary.Data\\BookLibrary.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.2, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[6.6.1, )"
+            },
+            "Serilog.Sinks.SQLite": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
