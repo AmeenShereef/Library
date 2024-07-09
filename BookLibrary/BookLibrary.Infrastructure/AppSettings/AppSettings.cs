@@ -10,7 +10,6 @@ namespace BookLibrary.Infrastructure.AppSettings
     {
         public int RegistrationCodeValidity { get; set; }
         public int TokenValidity { get; set; }
-        public AuthenticationSettings? AuthenticationSettings { get; set; }
 
     }
 }

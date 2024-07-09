@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookLibrary.API</name>
+    </assembly>
+    <members>
+        <member name="T:BookLibrary.API.Controllers.AuthenticationController">
+            <summary>
+            Controller responsible for authentication operations.
+            Requires authorization for all endpoints except for 'Login' and 'UpdateUserLogin'.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.Login(BookLibrary.Models.AuthenticateRequest)">
+            <summary>
+            Authenticates a user based on the provided credentials.
+            </summary>
+            <param name="authenticateRequest">The credentials to authenticate.</param>
+            <returns>An IActionResult representing the authentication result.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.UpdateLoginDetails(BookLibrary.Models.UserAdd)">
+            <summary>
+            Updates the login details of a user.
+            </summary>
+            <param name="request">The details to update for the user.</param>
+            <returns>An IActionResult representing the result of the update operation.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.CreateLogin(System.String,BookLibrary.Business.Constants.UserRole)">
+            <summary>
+            Registers a new user with the specified email and role.
+            Use 0 for admin and 1 for user.
+            </summary>
+            <param name="email">The email of the user to be registered.</param>
+            <param name="role">The role of the user (0 for admin, 1 for user).</param>
+            <returns>A response message containing the registered user details.</returns>
+        </member>
+    </members>
+</doc>

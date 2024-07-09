@@ -23,9 +23,7 @@ C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibr
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.dll
-C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.Design.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -197,3 +195,5 @@ C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibr
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.pdb
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.genruntimeconfig.cache
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\ref\BookLibrary.API.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\BookLibrary.API.xml
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.xml

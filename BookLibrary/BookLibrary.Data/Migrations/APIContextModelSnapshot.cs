@@ -100,6 +100,18 @@ namespace BookLibrary.Data.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            RoleId = 2,
+                            Name = "User"
+                        });
                 });
 
             modelBuilder.Entity("BookLibrary.Data.Entities.User", b =>

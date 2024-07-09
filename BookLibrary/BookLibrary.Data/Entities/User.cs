@@ -7,6 +7,7 @@ namespace BookLibrary.Data.Entities
     public class User : AuditableEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
 
         [Required]
@@ -20,7 +21,7 @@ namespace BookLibrary.Data.Entities
 
         [ForeignKey("RoleId")]
         public int RoleId { get; set; }
-        public Role? Role { get; set; }
+        public Role Role { get; set; } 
 
         public string? RegistrationCode { get; set; }
         public DateTime? RegistrationCodeTime { get; set; }

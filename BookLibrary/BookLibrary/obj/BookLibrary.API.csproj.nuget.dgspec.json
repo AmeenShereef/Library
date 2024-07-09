@@ -71,35 +71,21 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[6.6.1, )"
-            },
-            "Serilog.Sinks.SQLite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -187,35 +173,21 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[6.6.1, )"
-            },
-            "Serilog.Sinks.SQLite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -299,35 +271,21 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[6.6.1, )"
-            },
-            "Serilog.Sinks.SQLite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -411,35 +369,21 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[6.6.1, )"
-            },
-            "Serilog.Sinks.SQLite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -527,35 +471,21 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[6.6.1, )"
-            },
-            "Serilog.Sinks.SQLite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -661,22 +591,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.6, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "Serilog.Extensions.Logging": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[6.6.1, )"
-            },
-            "Serilog.Sinks.SQLite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

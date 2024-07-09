@@ -16,7 +16,7 @@ namespace BookLibrary.Business.Services.Logger
 			_serviceProvider = serviceProvider;
 		}
 
-		public async Task<ResponseMessage<PagedList<ExceptionLog>>> GetAllAsync(int? pageNumber, int? pageSize, string orderBy, bool orderDirection, string search)
+		public  ResponseMessage<PagedList<ExceptionLog>> GetAllAsync(int? pageNumber, int? pageSize, string orderBy, bool orderDirection, string search)
 		{
 			ResponseMessage<PagedList<ExceptionLog>> responseMessage = new ResponseMessage<PagedList<ExceptionLog>>();
 			using (var scope = _serviceProvider.CreateScope())

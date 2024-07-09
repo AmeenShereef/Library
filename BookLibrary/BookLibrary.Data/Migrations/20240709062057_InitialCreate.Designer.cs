@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookLibrary.Data.Migrations
 {
     [DbContext(typeof(APIContext))]
-    [Migration("20240709050343_InitialCreate")]
+    [Migration("20240709062057_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -103,6 +103,18 @@ namespace BookLibrary.Data.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            RoleId = 2,
+                            Name = "User"
+                        });
                 });
 
             modelBuilder.Entity("BookLibrary.Data.Entities.User", b =>

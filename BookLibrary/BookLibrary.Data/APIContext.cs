@@ -1,5 +1,6 @@
 ﻿using BookLibrary.Data.Entities;
 using BookLibrary.Data.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -22,6 +23,12 @@ namespace BookLibrary.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.LoadConfigurationsFromAssembly();
+
+            // Seed roles data
+            modelBuilder.Entity<Role>().HasData(
+                new Role { RoleId = 1, Name = "Admin" },
+                new Role { RoleId = 2, Name = "User" }           
+            );            
         }
     }
 }

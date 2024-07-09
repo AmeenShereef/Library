@@ -1,4 +1,6 @@
 ﻿using BookLibrary.Business.Abstractions;
+using BookLibrary.Business.Constants;
+using BookLibrary.Business.Extensions;
 using BookLibrary.Business.Services.PasswordHasher;
 using BookLibrary.Data.Entities;
 using BookLibrary.Infrastructure.AppSettings;
@@ -19,19 +21,24 @@ namespace BookLibrary.Business.AutenticateAggregate
     {
         private readonly IAuthenticationRepository _authenticationRepository;
         private readonly AppSettings _appSettings;
+        private readonly AuthenticationSettings _authenticationSettings ;
 
-        public AuthenticationService(IAuthenticationRepository authenticationRepository,IConfiguration configuration,IOptions<AppSettings> appSettings)
+
+        public AuthenticationService(IAuthenticationRepository authenticationRepository,IConfiguration configuration,IOptions<AppSettings> appSettings, IOptions<AuthenticationSettings> authenticationSettings)
         {
             this._authenticationRepository = authenticationRepository;
             this._appSettings = appSettings.Value;
+            this._authenticationSettings = authenticationSettings.Value;
         }
 
-        public UserDto? GetAuthenticatedUser(AuthenticateRequest authenicateRequest)
+        public UserDto? AuthenticateUser(AuthenticateRequest req)
         {
+            new ValidatorExtensions.GenericValidation<AuthenticateRequest, AuthenticationValidator>().Validate(req);
+
             var user = _authenticationRepository
-                .Get(u => u.IsActive == true && u.Email.ToLower().Trim() == authenicateRequest.Username.ToLower().Trim())
+                .Get(u => u.IsActive == true && u.Email.ToLower().Trim() == req.Username.ToLower().Trim(),includes: x => x.Role)
                 .FirstOrDefault();
-            var password = authenicateRequest.Password;
+            var password = req.Password;
 
             if (user == null || (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(user.Password) && !PasswordHash.ValidatePassword(password, user.Password)))
                 return null;
@@ -39,16 +46,16 @@ namespace BookLibrary.Business.AutenticateAggregate
             
             var claims = new List<Claim>
             {
-            new Claim(ClaimTypes.Name, user.Email),                
-            new Claim("userId", user.UserId.ToString()),
-            new Claim("role", user.Role?.Name ??""),
-            new Claim("expiryTime", DateTime.Now.AddMinutes(60).ToString())
+                new Claim(ClaimTypes.Name, user.Email),                
+                new Claim("userId", user.UserId.ToString()),
+                new Claim("role", user.Role?.Name ??""),
+                new Claim("expiryTime", DateTime.Now.AddMinutes(_appSettings.TokenValidity).ToString())
             };
 
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.AuthenticationSettings!.JwtBearer.SecurityKey));
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtBearer.SecurityKey));
             var token = new JwtSecurityToken(
-                issuer: _appSettings.AuthenticationSettings!.JwtBearer.Issuer,
-                audience: _appSettings.AuthenticationSettings!.JwtBearer.Audience,
+                issuer: _authenticationSettings.JwtBearer.Issuer,
+                audience: _authenticationSettings.JwtBearer.Audience,
                 expires: DateTime.Now.AddMinutes(_appSettings.TokenValidity),
                 claims: claims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
@@ -61,8 +68,8 @@ namespace BookLibrary.Business.AutenticateAggregate
             return user.Adapt<UserDto>();
             
         }
-        public async Task<ResponseMessage<UserDto>> CreateLogin(string email)
-        {
+        public async Task<ResponseMessage<UserDto>> RegisterUser(string email)
+        {           
             var response = new ResponseMessage<UserDto>();
             var newToken = Guid.NewGuid().ToString("N");
             var currentTime = DateTime.Now;
@@ -72,7 +79,7 @@ namespace BookLibrary.Business.AutenticateAggregate
 
             // Check if a user with the given email already exists 
             var user = _authenticationRepository
-                .Get(x => x.Email.ToLower().Trim() == email)
+                .Get(x => x.Email.ToLower().Trim() == email, includes: x => x.Role)
                 .FirstOrDefault();
 
             if (user != null)
@@ -112,8 +119,7 @@ namespace BookLibrary.Business.AutenticateAggregate
                 }
             }
 
-            // Create a new user
-            int roleId = 2; // Assuming the role ID for new users is 2. Adjust as necessary.
+            var roleId = _authenticationRepository.GetRole(UserRole.User.ToString().ToString()).RoleId;
 
             user = new User
             {
@@ -126,8 +132,6 @@ namespace BookLibrary.Business.AutenticateAggregate
             var createdUser = await _authenticationRepository.InsertAsync(user);
 
             // TODO: Send welcome mail with registration code
-            
-
             response.Data = createdUser.Adapt<UserDto>();
             response.Message = "Login created successfully";
             return response;

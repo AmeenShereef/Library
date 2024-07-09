@@ -1,67 +1,75 @@
-2024-07-09 10:35:24.606 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-PRAGMA journal_mode = 'wal';
-2024-07-09 10:35:24.671 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE "__EFMigrationsHistory" (
-    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
-    "ProductVersion" TEXT NOT NULL
-);
-2024-07-09 10:35:24.675 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
-2024-07-09 10:35:24.676 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT "MigrationId", "ProductVersion"
-FROM "__EFMigrationsHistory"
-ORDER BY "MigrationId";
-2024-07-09 10:35:24.683 +05:30 [INF] Applying migration '20240709050343_InitialCreate'.
-2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE "APILog" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_APILog" PRIMARY KEY AUTOINCREMENT,
-    "Path" TEXT NULL,
-    "QueryString" TEXT NULL,
-    "Method" TEXT NULL,
-    "UserAgent" TEXT NULL,
-    "Host" TEXT NULL,
-    "UserId" INTEGER NULL,
-    "Headers" TEXT NULL
-);
-2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE "ExceptionLogs" (
-    "Id" INTEGER NOT NULL CONSTRAINT "PK_ExceptionLogs" PRIMARY KEY AUTOINCREMENT,
-    "CreatedOn" TEXT NOT NULL,
-    "Source" TEXT NULL,
-    "TargetSite" TEXT NULL,
-    "Message" TEXT NULL,
-    "StackTrace" TEXT NULL,
-    "Path" TEXT NULL,
-    "QueryString" TEXT NULL,
-    "Body" TEXT NULL,
-    "UserAgent" TEXT NULL
-);
-2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE "Roles" (
-    "RoleId" INTEGER NOT NULL CONSTRAINT "PK_Roles" PRIMARY KEY AUTOINCREMENT,
-    "Name" TEXT NOT NULL
-);
-2024-07-09 10:35:24.700 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE TABLE "Users" (
-    "UserId" INTEGER NOT NULL CONSTRAINT "PK_Users" PRIMARY KEY AUTOINCREMENT,
-    "Email" TEXT NOT NULL,
-    "IsActive" INTEGER NULL,
-    "DisplayName" TEXT NULL,
-    "Password" TEXT NULL,
-    "RoleId" INTEGER NOT NULL,
-    "RegistrationCode" TEXT NULL,
-    "RegistrationCodeTime" TEXT NULL,
-    "AccessToken" TEXT NULL,
-    "RefreshToken" TEXT NULL,
-    "LastLoginTime" TEXT NULL,
-    "CreationTime" TEXT NULL,
-    "CreatorUserId" INTEGER NULL,
-    "LastModificationTime" TEXT NULL,
-    "LastModifierUserId" INTEGER NULL,
-    CONSTRAINT "FK_Users_Roles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "Roles" ("RoleId") ON DELETE CASCADE
-);
-2024-07-09 10:35:24.701 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-CREATE INDEX "IX_Users_RoleId" ON "Users" ("RoleId");
-2024-07-09 10:35:24.701 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-VALUES ('20240709050343_InitialCreate', '8.0.6');
+2024-07-09 14:35:20.812 +05:30 [ERR] Failed executing DbCommand (30,115ms) [Parameters=[@p0='?' (Size = 700), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 35), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id";
+2024-07-09 14:35:20.894 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'BookLibrary.Data.APIContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 5: 'database is locked'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 5: 'database is locked'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-07-09 14:35:21.036 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 5: 'database is locked'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BookLibrary.Business.Services.Logger.APILoggerService.Log(String requestPath, String requestQueryString, String method, String userAgent, String host, Nullable`1 userId, String headers) in C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary.Business\Services\Logger\APILoggerService.cs:line 36
+   at BookLibrary.API.Middleware.Middleware.LogRequest(HttpContext context) in C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\Middleware\Middleware.cs:line 144
+   at BookLibrary.API.Middleware.Middleware.Invoke(HttpContext context) in C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\Middleware\Middleware.cs:line 30
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-07-09 14:35:34.021 +05:30 [INF] Valid Consumers - localhost
+2024-07-09 14:35:34.026 +05:30 [INF] Referer Value - localhost
+2024-07-09 14:35:34.208 +05:30 [INF] Entering UpdateUserLogin Post
+2024-07-09 14:35:34.231 +05:30 [INF] BaseRepository - GetAll - Entering
+2024-07-09 14:35:34.494 +05:30 [INF] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 0
+2024-07-09 14:35:34.516 +05:30 [INF] BaseRepository - UpdateEntityAsync - Entering - User Id - 0
+2024-07-09 14:35:34.555 +05:30 [INF] BaseRepository - UpdateEntityAsync - Completed - User Id - 0
+2024-07-09 14:35:34.559 +05:30 [INF] Updated User Login Details
