@@ -7,6 +7,9 @@ using System.Text.Json;
 
 namespace BookLibrary.API.Middleware
 {
+    /// <summary>
+    /// Custom middleware for handling exceptions, logging requests, and validating consumers.
+    /// </summary>
     public class Middleware
     {
         private readonly RequestDelegate _next;
@@ -15,6 +18,14 @@ namespace BookLibrary.API.Middleware
         private readonly ILogger<Middleware> _logger;
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Initializes a new instance of the Middleware class.
+        /// </summary>
+        /// <param name="next">The next middleware in the pipeline.</param>
+        /// <param name="exceptionLogger">The exception logger service.</param>
+        /// <param name="apiLogger">The API logger service.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="logger">The logger.</param>
         public Middleware(RequestDelegate next, IExceptionLoggerService exceptionLogger, IAPILoggerService apiLogger, IConfiguration configuration, ILogger<Middleware> logger)
         {
             _next = next;
@@ -24,6 +35,11 @@ namespace BookLibrary.API.Middleware
             _logger = logger;
         }
 
+        /// <summary>
+        /// Invokes the middleware.
+        /// </summary>
+        /// <param name="context">The HTTP context.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
         public async Task Invoke(HttpContext context)
         {
             var path = context.Request.Path.Value;
@@ -31,7 +47,6 @@ namespace BookLibrary.API.Middleware
 
             try
             {
-
                 if (!ValidConsumer(context))
                     throw new UnauthorizedAccessException("Not Authorized. Invalid Request");
 
@@ -39,56 +54,15 @@ namespace BookLibrary.API.Middleware
             }
             catch (Exception error)
             {
-                var response = context.Response;
-                response.ContentType = "application/json";
-                string result = "";
-
-                var errorObject = new ErrorObject
-                {
-                    path = path,
-                    message = error?.Message,
-                };
-
-                var innerException = error?.InnerException;
-                while (innerException != null)
-                {
-                    errorObject.message += $"\r\n{innerException.Message}";
-                    innerException = innerException.InnerException;
-                }
-
-
-
-                switch (error)
-                {
-                    case KeyNotFoundException e:
-                        response.StatusCode = (int)HttpStatusCode.NotFound;
-                        errorObject.status = (int)HttpStatusCode.NotFound;
-                        result = JsonConvert.SerializeObject(errorObject);
-                        break;
-                    case ValidationException e:
-                        response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
-                        errorObject.status = (int)HttpStatusCode.UnprocessableEntity;
-                        ValidationErrorObject validationErrorObject = new ValidationErrorObject(errorObject);
-                        validationErrorObject.validation = e.validationObject;
-                        result = JsonConvert.SerializeObject(validationErrorObject);
-                        break;
-                    case UnauthorizedAccessException e:
-                        response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        errorObject.status = (int)HttpStatusCode.Unauthorized;
-                        result = JsonConvert.SerializeObject(errorObject);
-                        break;
-                    case Exception e:
-                        response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        errorObject.status = (int)HttpStatusCode.InternalServerError;
-                        result = JsonConvert.SerializeObject(errorObject);
-                        await WriteExceptionLog(context, e);
-                        break;
-                }
-
-                await response.WriteAsync(result);
+                await HandleException(context, error, path??"");
             }
         }
 
+        /// <summary>
+        /// Validates if the request is from an allowed consumer.
+        /// </summary>
+        /// <param name="context">The HTTP context.</param>
+        /// <returns>True if the consumer is valid, false otherwise.</returns>
         private bool ValidConsumer(HttpContext context)
         {
             var referer = context.Request.Headers.ContainsKey("Referer")
@@ -111,7 +85,7 @@ namespace BookLibrary.API.Middleware
                     Uri referrerUri = new Uri(referer.ToString());
                     _logger.LogInformation("Referer Value - " + referrerUri.Host.Replace("wwww", ""));
 
-                    if (validConsumers.Split(',').Contains(referrerUri.Host.Replace("wwww","")))
+                    if (validConsumers.Split(',').Contains(referrerUri.Host.Replace("wwww", "")))
                         return true;
                 }
             }
@@ -119,6 +93,11 @@ namespace BookLibrary.API.Middleware
             return false;
         }
 
+        /// <summary>
+        /// Logs the incoming request.
+        /// </summary>
+        /// <param name="context">The HTTP context.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
         private async Task LogRequest(HttpContext context)
         {
             var path = context.Request.Path.Value;
@@ -133,18 +112,22 @@ namespace BookLibrary.API.Middleware
 
             string headers = string.Empty;
 
-            if(context.Request.Headers != null)
+            if (context.Request.Headers != null && context.Request.Headers.Count > 0)
             {
-                if(context.Request.Headers.Count > 0)
-                    headers = JsonConvert.SerializeObject(context.Request.Headers);
+                headers = JsonConvert.SerializeObject(context.Request.Headers);
             }
-                        
+
             long? userId = context.User != null ? context.User.GetUserId() : null;
 
             await _apiLogger.Log(path, query, method, userAgent, host, userId, headers);
-
         }
 
+        /// <summary>
+        /// Writes an exception log.
+        /// </summary>
+        /// <param name="context">The HTTP context.</param>
+        /// <param name="e">The exception that occurred.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
         private async Task WriteExceptionLog(HttpContext context, Exception e)
         {
             var path = context.Request.Path.Value;
@@ -168,19 +151,96 @@ namespace BookLibrary.API.Middleware
 
             await _exceptionLogger.Log(e, path, query, body, userAgent);
         }
+
+        /// <summary>
+        /// Handles exceptions and writes appropriate responses.
+        /// </summary>
+        /// <param name="context">The HTTP context.</param>
+        /// <param name="error">The exception that occurred.</param>
+        /// <param name="path">The request path.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        private async Task HandleException(HttpContext context, Exception error, string path)
+        {
+            var response = context.Response;
+            response.ContentType = "application/json";
+            string result = "";
+
+            var errorObject = new ErrorObject
+            {
+                path = path,
+                message = error?.Message,
+            };
+
+            var innerException = error?.InnerException;
+            while (innerException != null)
+            {
+                errorObject.message += $"\r\n{innerException.Message}";
+                innerException = innerException.InnerException;
+            }
+
+            switch (error)
+            {
+                case KeyNotFoundException e:
+                    response.StatusCode = (int)HttpStatusCode.NotFound;
+                    errorObject.status = (int)HttpStatusCode.NotFound;
+                    result = JsonConvert.SerializeObject(errorObject);
+                    break;
+                case ValidationException e:
+                    response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                    errorObject.status = (int)HttpStatusCode.UnprocessableEntity;
+                    ValidationErrorObject validationErrorObject = new ValidationErrorObject(errorObject);
+                    validationErrorObject.validation = e.validationObject;
+                    result = JsonConvert.SerializeObject(validationErrorObject);
+                    break;
+                case UnauthorizedAccessException e:
+                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    errorObject.status = (int)HttpStatusCode.Unauthorized;
+                    result = JsonConvert.SerializeObject(errorObject);
+                    break;
+                default:
+                    response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    errorObject.status = (int)HttpStatusCode.InternalServerError;
+                    result = JsonConvert.SerializeObject(errorObject);
+                    await WriteExceptionLog(context, error!);
+                    break;
+            }
+
+            await response.WriteAsync(result);
+        }
     }
 
+    /// <summary>
+    /// Represents an error object returned in the API response.
+    /// </summary>
     public class ErrorObject
     {
+        /// <summary>
+        /// Gets or sets the HTTP status code.
+        /// </summary>
         [JsonProperty(Order = 1)]
         public int status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the request path.
+        /// </summary>
         [JsonProperty(Order = 2)]
         public string? path { get; set; }
+
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
         [JsonProperty(Order = 3)]
         public string? message { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the ErrorObject class.
+        /// </summary>
         public ErrorObject() { }
 
+        /// <summary>
+        /// Initializes a new instance of the ErrorObject class with properties from another ErrorObject.
+        /// </summary>
+        /// <param name="error">The ErrorObject to copy properties from.</param>
         protected ErrorObject(ErrorObject error)
         {
             path = error.path;
@@ -189,13 +249,21 @@ namespace BookLibrary.API.Middleware
         }
     }
 
+    /// <summary>
+    /// Represents a validation error object returned in the API response.
+    /// </summary>
     public class ValidationErrorObject : ErrorObject
     {
+        /// <summary>
+        /// Gets or sets the validation details.
+        /// </summary>
         [JsonProperty(Order = 4)]
         public dynamic? validation { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the ValidationErrorObject class.
+        /// </summary>
+        /// <param name="errorObject">The base ErrorObject.</param>
         public ValidationErrorObject(ErrorObject errorObject) : base(errorObject) { }
-
-
     }
 }

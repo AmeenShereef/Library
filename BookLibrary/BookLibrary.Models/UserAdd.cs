@@ -8,8 +8,8 @@ namespace BookLibrary.Models
 {
     public class UserAdd
     {
-        public string DisplayName { get; set; }
-        public string Password { get; set; }
-        public string RegistrationCode { get; set; }
+        public string DisplayName { get; set; } = default!;
+        public string Password { get; set; } = default!;
+        public string RegistrationCode { get; set; } = default!;
     }
 }

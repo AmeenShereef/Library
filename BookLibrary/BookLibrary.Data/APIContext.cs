@@ -14,7 +14,7 @@ namespace BookLibrary.Data
         public virtual DbSet<User> Users { get; set; } = default!;
         public virtual DbSet<Role> Roles { get; set; } = default!;
 
-        protected readonly IConfiguration Configuration;
+        protected readonly IConfiguration? Configuration;
 
         public APIContext(DbContextOptions options) : base(options)
         {

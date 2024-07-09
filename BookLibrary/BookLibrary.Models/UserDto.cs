@@ -11,7 +11,7 @@ namespace BookLibrary.Models
     public class UserDto
     {    
         public int UserId { get; set; }    
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
         public bool? IsActive { get; set; }
         public string? DisplayName { get; set; }       
         public string? Role { get; set; }

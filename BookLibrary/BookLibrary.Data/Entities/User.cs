@@ -11,7 +11,7 @@ namespace BookLibrary.Data.Entities
         public int UserId { get; set; }
 
         [Required]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         public bool? IsActive { get; set; }
 
@@ -21,7 +21,7 @@ namespace BookLibrary.Data.Entities
 
         [ForeignKey("RoleId")]
         public int RoleId { get; set; }
-        public Role Role { get; set; } 
+        public Role Role { get; set; } = default!;
 
         public string? RegistrationCode { get; set; }
         public DateTime? RegistrationCodeTime { get; set; }

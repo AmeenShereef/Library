@@ -8,6 +8,6 @@ namespace BookLibrary.Infrastructure.AppSettings
 {    
     public class AuthenticationSettings
     {
-        public JwtBearerSettings JwtBearer { get; set; }
+        public JwtBearerSettings JwtBearer { get; set; } = null!;
     }    
 }

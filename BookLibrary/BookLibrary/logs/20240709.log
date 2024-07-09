@@ -1,0 +1,52 @@
+2024-07-09 16:23:00 [Information] Now listening on: https://localhost:7066 
+2024-07-09 16:23:00 [Information] Now listening on: http://localhost:5232 
+2024-07-09 16:23:00 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-09 16:23:00 [Information] Hosting environment: Development 
+2024-07-09 16:23:00 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-09 16:23:18 [Information] Executed DbCommand (21ms) [Parameters=[@p0='?' (Size = 669), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 32), @p4='?' (Size = 13), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-09 16:23:18 [Information] Valid Consumers - localhost 
+2024-07-09 16:23:18 [Information] Referer Value - localhost 
+2024-07-09 16:23:18 [Information] Entering CreateLogin Post 
+2024-07-09 16:23:18 [Information] BaseRepository - Get - Entering 
+2024-07-09 16:23:18 [Information] BaseRepository - GetAll - Entering 
+2024-07-09 16:23:19 [Information] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 6)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE trim(lower("u"."Email")) = @__email_0 
+2024-07-09 16:23:19 [Information] Executed DbCommand (0ms) [Parameters=[@__roleName_0='?' (Size = 4)], CommandType='Text', CommandTimeout='30']
+SELECT "r"."RoleId", "r"."Name"
+FROM "Roles" AS "r"
+WHERE "r"."Name" = @__roleName_0
+LIMIT 2 
+2024-07-09 16:23:19 [Information] BaseRepository - InsertAsync - Entering - User Id - 0 
+2024-07-09 16:23:19 [Information] BaseRepository - InsertEntityAsync - Entering - User Id - 0 
+2024-07-09 16:23:19 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?', @p4='?' (Size = 6), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?', @p10='?', @p11='?' (Size = 32), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Users" ("AccessToken", "CreationTime", "CreatorUserId", "DisplayName", "Email", "IsActive", "LastLoginTime", "LastModificationTime", "LastModifierUserId", "Password", "RefreshToken", "RegistrationCode", "RegistrationCodeTime", "RoleId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13)
+RETURNING "UserId"; 
+2024-07-09 16:23:19 [Information] BaseRepository - InsertEntityAsync - Completed - User Id - 0 
+2024-07-09 16:23:19 [Information] Added Login entry 
+2024-07-09 16:45:50 [Information] Now listening on: https://localhost:7066 
+2024-07-09 16:45:50 [Information] Now listening on: http://localhost:5232 
+2024-07-09 16:45:50 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-09 16:45:50 [Information] Hosting environment: Development 
+2024-07-09 16:45:50 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-09 16:46:52 [Information] Executed DbCommand (22ms) [Parameters=[@p0='?' (Size = 699), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-09 16:46:52 [Information] Valid Consumers - localhost 
+2024-07-09 16:46:52 [Information] Referer Value - localhost 
+2024-07-09 16:46:52 [Information] Entering Login Post 
+2024-07-09 16:46:52 [Information] BaseRepository - Get - Entering 
+2024-07-09 16:46:52 [Information] BaseRepository - GetAll - Entering 
+2024-07-09 16:46:53 [Information] Executed DbCommand (1ms) [Parameters=[@__Trim_0='?' (Size = 6)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE "u"."IsActive" = 1 AND trim(lower("u"."Email")) = @__Trim_0 
+2024-07-09 16:46:53 [Information] Unauthenticated Login 

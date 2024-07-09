@@ -1,26 +1,28 @@
+using BookLibrary.API.Middleware;
+using BookLibrary.API.Security;
 using BookLibrary.Business.Extensions;
+using BookLibrary.Business.Mapper;
 using BookLibrary.Infrastructure.AppSettings;
 using BookLibrary.Repositories.Extensions;
-using Serilog;
-using Microsoft.OpenApi.Models;
-using BookLibrary.API.Security;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.Reflection;
-using BookLibrary.API.Middleware;
-using BookLibrary.Business.Mapper;
 using Mapster;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using Serilog.Events;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+builder.Logging.AddEventSourceLogger();
 
-// Configure Serilog
+var logPath = Path.Combine(builder.Environment.ContentRootPath, "logs");
+builder.Logging.AddFile(logPath);
+
 
 var configuration = builder.Configuration;
 
@@ -40,7 +42,7 @@ builder.Services.AddSingleton<IMapper>(new Mapper(typeAdapterConfig));
 
 builder.Services.AddCors(setup =>
 {
-    setup.AddPolicy(AllowWhitelistCorsPolicy.Name, AllowWhitelistCorsPolicy.Get(configuration["CorsWhitelist"].Split(',')));
+    setup.AddPolicy(AllowWhitelistCorsPolicy.Name, AllowWhitelistCorsPolicy.Get(configuration["CorsWhitelist"]?.Split(',')!));
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -53,7 +55,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateAudience = true,
         ValidAudience = configuration["Authentication:JwtBearer:Audience"],
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:JwtBearer:SecurityKey"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:JwtBearer:SecurityKey"]!))
     };
 });
 

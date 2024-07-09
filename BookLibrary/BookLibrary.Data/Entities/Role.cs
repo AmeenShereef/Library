@@ -13,6 +13,6 @@ namespace BookLibrary.Data.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleId { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
     }
 }

@@ -7,8 +7,14 @@
         <member name="T:BookLibrary.API.Controllers.AuthenticationController">
             <summary>
             Controller responsible for authentication operations.
-            Requires authorization for all endpoints except for 'Login' and 'UpdateUserLogin'.
             </summary>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.#ctor(BookLibrary.Business.Abstractions.IAuthenticationService,Microsoft.Extensions.Logging.ILogger{BookLibrary.API.Controllers.AuthenticationController})">
+            <summary>
+            Initializes a new instance of the AuthenticationController.
+            </summary>
+            <param name="authenticationService">The authentication service.</param>
+            <param name="logger">The logger.</param>
         </member>
         <member name="M:BookLibrary.API.Controllers.AuthenticationController.Login(BookLibrary.Models.AuthenticateRequest)">
             <summary>
@@ -24,14 +30,163 @@
             <param name="request">The details to update for the user.</param>
             <returns>An IActionResult representing the result of the update operation.</returns>
         </member>
-        <member name="M:BookLibrary.API.Controllers.AuthenticationController.CreateLogin(System.String,BookLibrary.Business.Constants.UserRole)">
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.RegisterUser(System.String)">
             <summary>
-            Registers a new user with the specified email and role.
-            Use 0 for admin and 1 for user.
+            Registers a new user with the specified email.
             </summary>
             <param name="email">The email of the user to be registered.</param>
-            <param name="role">The role of the user (0 for admin, 1 for user).</param>
             <returns>A response message containing the registered user details.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.ForgotPassword(System.String)">
+            <summary>
+            Initiates the forgot password process for a user.
+            </summary>
+            <param name="email">The email address of the user requesting a password reset.</param>
+            <returns>An IActionResult containing the result of the forgot password request.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AuthenticationController.UpdatePassword(System.String,System.String)">
+            <summary>
+            Updates the password for a user using a reset token.
+            </summary>
+            <param name="token">The reset token.</param>
+            <param name="newPassword">The new password.</param>
+            <returns>An IActionResult containing the result of the password update.</returns>
+        </member>
+        <member name="T:BookLibrary.API.Extensions.ClaimsPrincipalExtensions">
+            <summary>
+            Provides extension methods for ClaimsPrincipal to easily retrieve user information.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Extensions.ClaimsPrincipalExtensions.GetUserId(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Retrieves the user ID from the ClaimsPrincipal.
+            </summary>
+            <param name="user">The ClaimsPrincipal representing the current user.</param>
+            <returns>The user ID as a long, or 0 if not found or invalid.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Extensions.ClaimsPrincipalExtensions.GetRoles(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Retrieves the list of roles assigned to the user from the ClaimsPrincipal.
+            </summary>
+            <param name="user">The ClaimsPrincipal representing the current user.</param>
+            <returns>A list of role names as strings.</returns>
+        </member>
+        <member name="T:BookLibrary.API.Middleware.Middleware">
+            <summary>
+            Custom middleware for handling exceptions, logging requests, and validating consumers.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.Middleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,BookLibrary.Business.Abstractions.IExceptionLoggerService,BookLibrary.Business.Abstractions.IAPILoggerService,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{BookLibrary.API.Middleware.Middleware})">
+            <summary>
+            Initializes a new instance of the Middleware class.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="exceptionLogger">The exception logger service.</param>
+            <param name="apiLogger">The API logger service.</param>
+            <param name="configuration">The configuration.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.Middleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes the middleware.
+            </summary>
+            <param name="context">The HTTP context.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.Middleware.ValidConsumer(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Validates if the request is from an allowed consumer.
+            </summary>
+            <param name="context">The HTTP context.</param>
+            <returns>True if the consumer is valid, false otherwise.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.Middleware.LogRequest(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Logs the incoming request.
+            </summary>
+            <param name="context">The HTTP context.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.Middleware.WriteExceptionLog(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Writes an exception log.
+            </summary>
+            <param name="context">The HTTP context.</param>
+            <param name="e">The exception that occurred.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.Middleware.HandleException(Microsoft.AspNetCore.Http.HttpContext,System.Exception,System.String)">
+            <summary>
+            Handles exceptions and writes appropriate responses.
+            </summary>
+            <param name="context">The HTTP context.</param>
+            <param name="error">The exception that occurred.</param>
+            <param name="path">The request path.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="T:BookLibrary.API.Middleware.ErrorObject">
+            <summary>
+            Represents an error object returned in the API response.
+            </summary>
+        </member>
+        <member name="P:BookLibrary.API.Middleware.ErrorObject.status">
+            <summary>
+            Gets or sets the HTTP status code.
+            </summary>
+        </member>
+        <member name="P:BookLibrary.API.Middleware.ErrorObject.path">
+            <summary>
+            Gets or sets the request path.
+            </summary>
+        </member>
+        <member name="P:BookLibrary.API.Middleware.ErrorObject.message">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.ErrorObject.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorObject class.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.ErrorObject.#ctor(BookLibrary.API.Middleware.ErrorObject)">
+            <summary>
+            Initializes a new instance of the ErrorObject class with properties from another ErrorObject.
+            </summary>
+            <param name="error">The ErrorObject to copy properties from.</param>
+        </member>
+        <member name="T:BookLibrary.API.Middleware.ValidationErrorObject">
+            <summary>
+            Represents a validation error object returned in the API response.
+            </summary>
+        </member>
+        <member name="P:BookLibrary.API.Middleware.ValidationErrorObject.validation">
+            <summary>
+            Gets or sets the validation details.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Middleware.ValidationErrorObject.#ctor(BookLibrary.API.Middleware.ErrorObject)">
+            <summary>
+            Initializes a new instance of the ValidationErrorObject class.
+            </summary>
+            <param name="errorObject">The base ErrorObject.</param>
+        </member>
+        <member name="T:BookLibrary.API.Security.AllowWhitelistCorsPolicy">
+            <summary>
+            Defines a CORS policy that allows requests from whitelisted origins.
+            </summary>
+        </member>
+        <member name="F:BookLibrary.API.Security.AllowWhitelistCorsPolicy.Name">
+            <summary>
+            The name of the CORS policy.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Security.AllowWhitelistCorsPolicy.Get(System.String[])">
+            <summary>
+            Creates a CORS policy that allows any origin, method, and header.
+            </summary>
+            <param name="whitelist">An array of whitelisted origins (not currently used).</param>
+            <returns>A CorsPolicy object representing the CORS policy.</returns>
         </member>
     </members>
 </doc>

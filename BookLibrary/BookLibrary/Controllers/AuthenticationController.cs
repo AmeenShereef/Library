@@ -1,17 +1,14 @@
 ﻿using BookLibrary.Business.Abstractions;
-using BookLibrary.Business.Constants;
-using BookLibrary.Infrastructure.AppSettings;
 using BookLibrary.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace BookLibrary.API.Controllers
 {
     /// <summary>
     /// Controller responsible for authentication operations.
-    /// Requires authorization for all endpoints except for 'Login' and 'UpdateUserLogin'.
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -20,13 +17,16 @@ namespace BookLibrary.API.Controllers
     {
         private readonly ILogger<AuthenticationController> _logger;
         private readonly IAuthenticationService _authenticationService;
+
         /// <summary>
-        /// Controller constructor
+        /// Initializes a new instance of the AuthenticationController.
         /// </summary>
-        public AuthenticationController(IAuthenticationService authenticationService, IOptions<AppSettings> appSettings, ILogger<AuthenticationController> logger)
+        /// <param name="authenticationService">The authentication service.</param>
+        /// <param name="logger">The logger.</param>
+        public AuthenticationController(IAuthenticationService authenticationService, ILogger<AuthenticationController> logger)
         {
-            this._authenticationService = authenticationService;
-            this._logger = logger;
+            _authenticationService = authenticationService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -68,14 +68,12 @@ namespace BookLibrary.API.Controllers
         }
 
         /// <summary>
-        /// Registers a new user with the specified email and role.
-        /// Use 0 for admin and 1 for user.
+        /// Registers a new user with the specified email.
         /// </summary>
         /// <param name="email">The email of the user to be registered.</param>
-        /// <param name="role">The role of the user (0 for admin, 1 for user).</param>
         /// <returns>A response message containing the registered user details.</returns>
+        [AllowAnonymous]
         [HttpPost("RegisterUser")]
-        [Authorize(Roles = "Admin")]
         public async Task<ResponseMessage<UserDto>> RegisterUser(string email)
         {
             _logger.LogInformation("Entering CreateLogin Post");
@@ -83,6 +81,39 @@ namespace BookLibrary.API.Controllers
             _logger.LogInformation("Added Login entry");
 
             return result;
+        }
+
+        /// <summary>
+        /// Initiates the forgot password process for a user.
+        /// </summary>
+        /// <param name="email">The email address of the user requesting a password reset.</param>
+        /// <returns>An IActionResult containing the result of the forgot password request.</returns>
+        [AllowAnonymous]
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            _logger.LogInformation("Entering ForgetPassword Post");
+            var result = await _authenticationService.ForgotPassword(email);
+            _logger.LogInformation(result.Message);
+
+            return Ok("Reset mail has been sent to the corresponding email.");
+        }
+
+        /// <summary>
+        /// Updates the password for a user using a reset token.
+        /// </summary>
+        /// <param name="token">The reset token.</param>
+        /// <param name="newPassword">The new password.</param>
+        /// <returns>An IActionResult containing the result of the password update.</returns>
+        [AllowAnonymous]
+        [HttpPost("UpdatePassword")]
+        public async Task<IActionResult> UpdatePassword(string token, string newPassword)
+        {
+            _logger.LogInformation("Entering UpdatePassword Post");
+            var result = await _authenticationService.UpdatePassword(token, newPassword);
+            _logger.LogInformation(result.Message);
+
+            return Ok(result);
         }
     }
 }
