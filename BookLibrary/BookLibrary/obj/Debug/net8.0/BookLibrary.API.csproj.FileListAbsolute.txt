@@ -5,6 +5,7 @@ C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibr
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\BookLibrary.API.runtimeconfig.json
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\BookLibrary.API.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\BookLibrary.API.pdb
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\BookLibrary.API.xml
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\FluentValidation.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Humanizer.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Mapster.dll
@@ -145,8 +146,7 @@ C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibr
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibr.3BFD1022.Up2Date
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.dll
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\refint\BookLibrary.API.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.xml
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.pdb
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.genruntimeconfig.cache
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\ref\BookLibrary.API.dll
-C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\BookLibrary.API.xml
-C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.xml

@@ -41,6 +41,6 @@ namespace BookLibrary.Repositories.Abstractions
         Task DeleteAsync(int id);
 
         Task<IReadOnlyList<TEntity>> GetPagedReponseAsync(int pageNumber, int pageSize);
-
+        public long GetUserId();
     }
 }

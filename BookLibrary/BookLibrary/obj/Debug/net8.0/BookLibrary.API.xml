@@ -52,6 +52,13 @@
             <param name="newPassword">The new password.</param>
             <returns>An IActionResult containing the result of the password update.</returns>
         </member>
+        <member name="M:BookLibrary.API.Controllers.BookController.#ctor(BookLibrary.Business.Abstractions.IBookService,Microsoft.Extensions.Logging.ILogger{BookLibrary.API.Controllers.AuthenticationController})">
+            <summary>
+            Initializes a new instance of the bookController.
+            </summary>
+            <param name="bookService">The bookService service.</param>
+            <param name="logger">The logger.</param>
+        </member>
         <member name="T:BookLibrary.API.Extensions.ClaimsPrincipalExtensions">
             <summary>
             Provides extension methods for ClaimsPrincipal to easily retrieve user information.

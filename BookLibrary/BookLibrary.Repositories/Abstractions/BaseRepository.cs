@@ -238,7 +238,7 @@ namespace BookLibrary.Repositories.Abstractions
                 .ToListAsync();
         }
 
-        private long GetUserId()
+        public long GetUserId()
         {
             long.TryParse(_httpContextAccessor.HttpContext?.User.Claims?.FirstOrDefault(c => c.Type == "userId")?.Value, out long userId);
             return userId;
