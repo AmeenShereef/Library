@@ -14,6 +14,7 @@ namespace BookLibrary.Data.Entities
         public string? Genre { get; set; }
         public string? ISBN { get; set; }
         public int? PublicationYear { get; set; }
+        public bool IsActive { get; set; }
 
         public ICollection<BookCopy> BookCopies { get; set; } = default!;
     }

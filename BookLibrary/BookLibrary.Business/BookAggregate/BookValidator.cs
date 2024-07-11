@@ -15,4 +15,24 @@ namespace BookLibrary.Business.BookAggregate
             RuleFor(x => x.BookCopyId).NotEmpty().WithMessage("The {PropertyName} is required.");
         }
     }
+
+    public class BookValidator : AbstractValidator<BookAdd>
+    {
+        public BookValidator()
+        {
+            RuleFor(x => x.Title).NotEmpty().WithMessage("The {PropertyName} is required.");
+            RuleFor(x => x.Author).NotEmpty().WithMessage("The {PropertyName} is required.");
+            RuleFor(x => x.Genre).NotEmpty().WithMessage("The {PropertyName} is required.");
+            RuleFor(x => x.ISBN).NotEmpty().WithMessage("The {PropertyName} is required.");
+            RuleFor(x => x.PublicationYear).NotEmpty().WithMessage("The {PropertyName} is required.");
+        }
+    }
+    public class BookCopyValidator : AbstractValidator<BookCopyAdd>
+    {
+        public BookCopyValidator()
+        {
+            RuleFor(x => x.BookId).NotEmpty().WithMessage("The {PropertyName} is required.");
+            RuleFor(x => x.CopyNumber).NotEmpty().WithMessage("The {PropertyName} is required.");
+        }
+    }
 }

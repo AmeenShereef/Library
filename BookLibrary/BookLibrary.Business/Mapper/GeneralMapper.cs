@@ -24,7 +24,11 @@ namespace BookLibrary.Business.Mapper
 
             TypeAdapterConfig<BorrowedBook, BorrowedBookDto>
                 .NewConfig()
-                .Map(dest => dest.BookCopy, src => src.BookCopy)
+                .Map(dest => dest.BookId, src => src.BookCopy.BookId)
+                .Map(dest => dest.Title, src => src.BookCopy.Book.Title)
+                .Map(dest => dest.Author, src => src.BookCopy.Book.Author)
+                .Map(dest => dest.Genre, src => src.BookCopy.Book.Genre)
+                .Map(dest => dest.ISBN, src => src.BookCopy.Book.ISBN)
                 .MaxDepth(3);
 
             TypeAdapterConfig<Book, BookDto>

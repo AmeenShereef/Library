@@ -11,8 +11,7 @@ namespace BookLibrary.API.Controllers
     /// Controller responsible for authentication operations.
     /// </summary>
     [Route("api/[controller]")]
-    [ApiController]
-    [Authorize]
+    [ApiController]    
     public class AuthenticationController : ControllerBase
     {
         private readonly ILogger<AuthenticationController> _logger;
@@ -33,8 +32,7 @@ namespace BookLibrary.API.Controllers
         /// Authenticates a user based on the provided credentials.
         /// </summary>
         /// <param name="authenticateRequest">The credentials to authenticate.</param>
-        /// <returns>An IActionResult representing the authentication result.</returns>
-        [AllowAnonymous]
+        /// <returns>An IActionResult representing the authentication result.</returns>       
         [HttpPost("Login")]
         public IActionResult Login([FromBody] AuthenticateRequest authenticateRequest)
         {
@@ -56,7 +54,6 @@ namespace BookLibrary.API.Controllers
         /// </summary>
         /// <param name="request">The details to update for the user.</param>
         /// <returns>An IActionResult representing the result of the update operation.</returns>
-        [AllowAnonymous]
         [HttpPost("UpdateUserLogin")]
         public async Task<IActionResult> UpdateLoginDetails([FromBody] UserAdd request)
         {
@@ -67,28 +64,13 @@ namespace BookLibrary.API.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Registers a new user with the specified email.
-        /// </summary>
-        /// <param name="email">The email of the user to be registered.</param>
-        /// <returns>A response message containing the registered user details.</returns>
-        [AllowAnonymous]
-        [HttpPost("RegisterUser")]
-        public async Task<ResponseMessage<UserDto>> RegisterUser(string email)
-        {
-            _logger.LogInformation("Entering CreateLogin Post");
-            var result = await _authenticationService.RegisterUser(email);
-            _logger.LogInformation("Added Login entry");
-
-            return result;
-        }
+       
 
         /// <summary>
         /// Initiates the forgot password process for a user.
         /// </summary>
         /// <param name="email">The email address of the user requesting a password reset.</param>
         /// <returns>An IActionResult containing the result of the forgot password request.</returns>
-        [AllowAnonymous]
         [HttpPost("ForgotPassword")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
@@ -105,7 +87,6 @@ namespace BookLibrary.API.Controllers
         /// <param name="token">The reset token.</param>
         /// <param name="newPassword">The new password.</param>
         /// <returns>An IActionResult containing the result of the password update.</returns>
-        [AllowAnonymous]
         [HttpPost("UpdatePassword")]
         public async Task<IActionResult> UpdatePassword(string token, string newPassword)
         {

@@ -1,0 +1,952 @@
+2024-07-11 00:20:22 [Information] Now listening on: https://localhost:7066 
+2024-07-11 00:20:22 [Information] Now listening on: http://localhost:5232 
+2024-07-11 00:20:22 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 00:20:22 [Information] Hosting environment: Development 
+2024-07-11 00:20:22 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 14:34:32 [Information] Now listening on: https://localhost:7066 
+2024-07-11 14:34:32 [Information] Now listening on: http://localhost:5232 
+2024-07-11 14:34:32 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 14:34:32 [Information] Hosting environment: Development 
+2024-07-11 14:34:32 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 14:39:18 [Information] Now listening on: https://localhost:7066 
+2024-07-11 14:39:18 [Information] Now listening on: http://localhost:5232 
+2024-07-11 14:39:18 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 14:39:18 [Information] Hosting environment: Development 
+2024-07-11 14:39:18 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 14:39:47 [Information] Executed DbCommand (19ms) [Parameters=[@p0='?' (Size = 662), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 33), @p4='?' (Size = 35), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 14:39:47 [Information] Valid Consumers - localhost 
+2024-07-11 14:39:47 [Information] Referer Value - localhost 
+2024-07-11 14:39:47 [Information] Entering BorrowBook 
+2024-07-11 14:39:47 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-11 14:39:47 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-11 14:39:47 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 14:39:47 [Error] Failed executing DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Books" AS "b"
+WHERE "b"."IsActive" = 1 
+2024-07-11 14:39:47 [Error] An exception occurred while iterating over the results of a query for context type 'BookLibrary.Data.APIContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: b.IsActive'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Storage.NonRetryingExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext() Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: b.IsActive'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Storage.NonRetryingExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+2024-07-11 14:39:47 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 45), @p3='?' (Size = 33), @p4='?' (Size = 35), @p5='?' (Size = 21), @p6='?' (Size = 5033), @p7='?' (Size = 50), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-11 14:40:59 [Information] Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table'; 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table'; 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2024-07-11 14:40:59 [Information] Applying migration '20240711091044_BookUpdates'. 
+2024-07-11 14:40:59 [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Books" ADD "IsActive" INTEGER NULL; 
+2024-07-11 14:40:59 [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "BookCopys" ADD "IsActive" INTEGER NOT NULL DEFAULT 0; 
+2024-07-11 14:40:59 [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 1;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 2;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 3;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 4;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 5;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 6;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 7;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "IsActive" = 0
+WHERE "BookCopyId" = 8;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "IsActive" = NULL
+WHERE "BookId" = 1;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "IsActive" = NULL
+WHERE "BookId" = 2;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "IsActive" = NULL
+WHERE "BookId" = 3;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "IsActive" = NULL
+WHERE "BookId" = 4;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "IsActive" = NULL
+WHERE "BookId" = 5;
+SELECT changes(); 
+2024-07-11 14:40:59 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240711091044_BookUpdates', '8.0.6'); 
+2024-07-11 14:45:54 [Information] Now listening on: https://localhost:7066 
+2024-07-11 14:45:54 [Information] Now listening on: http://localhost:5232 
+2024-07-11 14:45:54 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 14:45:54 [Information] Hosting environment: Development 
+2024-07-11 14:45:54 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 14:46:06 [Information] Executed DbCommand (18ms) [Parameters=[@p0='?' (Size = 662), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 33), @p4='?' (Size = 35), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 14:46:06 [Information] Valid Consumers - localhost 
+2024-07-11 14:46:06 [Information] Referer Value - localhost 
+2024-07-11 14:46:06 [Information] Entering BorrowBook 
+2024-07-11 14:46:06 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-11 14:46:06 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-11 14:46:06 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 14:46:06 [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Books" AS "b"
+WHERE "b"."IsActive" = 1 
+2024-07-11 14:46:06 [Information] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "t"."BookId", "t"."Author", "t"."CreationTime", "t"."CreatorUserId", "t"."Genre", "t"."ISBN", "t"."IsActive", "t"."LastModificationTime", "t"."LastModifierUserId", "t"."PublicationYear", "t"."Title", "b0"."BookCopyId", "b0"."AcquisitionDate", "b0"."BookId", "b0"."CopyNumber", "b0"."CreationTime", "b0"."CreatorUserId", "b0"."IsActive", "b0"."IsAvailable", "b0"."LastModificationTime", "b0"."LastModifierUserId"
+FROM (
+    SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+    FROM "Books" AS "b"
+    WHERE "b"."IsActive" = 1
+    ORDER BY "b"."BookId"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN "BookCopys" AS "b0" ON "t"."BookId" = "b0"."BookId"
+ORDER BY "t"."BookId" 
+2024-07-11 14:46:06 [Information] leaving BorrowBook 
+2024-07-11 14:48:14 [Information] Now listening on: https://localhost:7066 
+2024-07-11 14:48:14 [Information] Now listening on: http://localhost:5232 
+2024-07-11 14:48:14 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 14:48:14 [Information] Hosting environment: Development 
+2024-07-11 14:48:14 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 14:48:32 [Information] Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 662), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 33), @p4='?' (Size = 35), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 14:48:32 [Information] Valid Consumers - localhost 
+2024-07-11 14:48:32 [Information] Referer Value - localhost 
+2024-07-11 14:48:32 [Information] Entering BorrowBook 
+2024-07-11 14:48:32 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-11 14:48:32 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-11 14:48:32 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 14:48:32 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Books" AS "b"
+WHERE "b"."IsActive" = 1 
+2024-07-11 14:48:32 [Information] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "t"."BookId", "t"."Author", "t"."CreationTime", "t"."CreatorUserId", "t"."Genre", "t"."ISBN", "t"."IsActive", "t"."LastModificationTime", "t"."LastModifierUserId", "t"."PublicationYear", "t"."Title", "b0"."BookCopyId", "b0"."AcquisitionDate", "b0"."BookId", "b0"."CopyNumber", "b0"."CreationTime", "b0"."CreatorUserId", "b0"."IsActive", "b0"."IsAvailable", "b0"."LastModificationTime", "b0"."LastModifierUserId"
+FROM (
+    SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+    FROM "Books" AS "b"
+    WHERE "b"."IsActive" = 1
+    ORDER BY "b"."BookId"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN "BookCopys" AS "b0" ON "t"."BookId" = "b0"."BookId"
+ORDER BY "t"."BookId" 
+2024-07-11 14:48:32 [Information] leaving BorrowBook 
+2024-07-11 14:48:32 [Information] Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 402), @p3='?' (Size = 33), @p4='?' (Size = 35), @p5='?' (Size = 16), @p6='?' (Size = 17597), @p7='?' (Size = 54), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-11 14:59:50 [Information] Now listening on: https://localhost:7066 
+2024-07-11 14:59:50 [Information] Now listening on: http://localhost:5232 
+2024-07-11 14:59:50 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 14:59:50 [Information] Hosting environment: Development 
+2024-07-11 14:59:50 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 15:00:03 [Information] Executed DbCommand (31ms) [Parameters=[@p0='?' (Size = 662), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?' (Size = 9), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 15:00:03 [Information] Valid Consumers - localhost 
+2024-07-11 15:00:03 [Information] Referer Value - localhost 
+2024-07-11 15:00:04 [Information] Entering BorrowBook 
+2024-07-11 15:00:04 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 15:00:04 [Information] Executed DbCommand (1ms) [Parameters=[@__bookId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookCopyId", "b"."AcquisitionDate", "b"."BookId", "b"."CopyNumber", "b"."CreationTime", "b"."CreatorUserId", "b"."IsActive", "b"."IsAvailable", "b"."LastModificationTime", "b"."LastModifierUserId"
+FROM "BookCopys" AS "b"
+WHERE "b"."BookId" = @__bookId_0 
+2024-07-11 15:00:04 [Information] leaving BorrowBook 
+2024-07-11 15:18:03 [Information] Now listening on: https://localhost:7066 
+2024-07-11 15:18:03 [Information] Now listening on: http://localhost:5232 
+2024-07-11 15:18:03 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 15:18:03 [Information] Hosting environment: Development 
+2024-07-11 15:18:03 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 15:18:25 [Information] Executed DbCommand (22ms) [Parameters=[@p0='?' (Size = 669), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 27), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 15:18:25 [Information] Valid Consumers - localhost 
+2024-07-11 15:18:25 [Information] Referer Value - localhost 
+2024-07-11 15:18:25 [Information] Entering BorrowBook 
+2024-07-11 15:18:25 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 15:18:26 [Information] Executed DbCommand (0ms) [Parameters=[@__bookId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookCopyId", "b"."AcquisitionDate", "b"."BookId", "b"."CopyNumber", "b"."CreationTime", "b"."CreatorUserId", "b"."IsActive", "b"."IsAvailable", "b"."LastModificationTime", "b"."LastModifierUserId"
+FROM "BookCopys" AS "b"
+WHERE "b"."BookId" = @__bookId_0 
+2024-07-11 15:18:26 [Information] leaving BorrowBook 
+2024-07-11 15:19:33 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 610), @p1='?' (Size = 14), @p2='?' (Size = 3), @p3='?' (Size = 18), @p4='?' (Size = 35), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 15:19:33 [Information] Valid Consumers - localhost 
+2024-07-11 15:19:33 [Information] Referer Value - localhost 
+2024-07-11 15:19:33 [Information] Entering GetBooks 
+2024-07-11 15:19:33 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-11 15:19:33 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-11 15:19:33 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 15:19:34 [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Books" AS "b"
+WHERE "b"."IsActive" = 1 
+2024-07-11 15:19:34 [Warning] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased. 
+2024-07-11 15:19:34 [Information] Executed DbCommand (7ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "t"."BookId", "t"."Author", "t"."CreationTime", "t"."CreatorUserId", "t"."Genre", "t"."ISBN", "t"."IsActive", "t"."LastModificationTime", "t"."LastModifierUserId", "t"."PublicationYear", "t"."Title", "t0"."BookCopyId", "t0"."AcquisitionDate", "t0"."BookId", "t0"."CopyNumber", "t0"."CreationTime", "t0"."CreatorUserId", "t0"."IsActive", "t0"."IsAvailable", "t0"."LastModificationTime", "t0"."LastModifierUserId"
+FROM (
+    SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+    FROM "Books" AS "b"
+    WHERE "b"."IsActive" = 1
+    ORDER BY "b"."BookId"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN (
+    SELECT "t1"."BookCopyId", "t1"."AcquisitionDate", "t1"."BookId", "t1"."CopyNumber", "t1"."CreationTime", "t1"."CreatorUserId", "t1"."IsActive", "t1"."IsAvailable", "t1"."LastModificationTime", "t1"."LastModifierUserId"
+    FROM (
+        SELECT "b0"."BookCopyId", "b0"."AcquisitionDate", "b0"."BookId", "b0"."CopyNumber", "b0"."CreationTime", "b0"."CreatorUserId", "b0"."IsActive", "b0"."IsAvailable", "b0"."LastModificationTime", "b0"."LastModifierUserId", ROW_NUMBER() OVER(PARTITION BY "b0"."BookId" ORDER BY "b0"."BookCopyId") AS "row"
+        FROM "BookCopys" AS "b0"
+        WHERE "b0"."IsAvailable" AND "b0"."IsActive"
+    ) AS "t1"
+    WHERE "t1"."row" <= 1
+) AS "t0" ON "t"."BookId" = "t0"."BookId"
+ORDER BY "t"."BookId" 
+2024-07-11 15:19:35 [Information] Retrieved All Books 
+2024-07-11 15:19:54 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 706), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 20), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 15:19:54 [Information] Valid Consumers - localhost 
+2024-07-11 15:19:54 [Information] Referer Value - localhost 
+2024-07-11 15:20:43 [Information] Entering BorrowBook 
+2024-07-11 15:21:24 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 1 
+2024-07-11 15:21:24 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookCopyId", "b"."AcquisitionDate", "b"."BookId", "b"."CopyNumber", "b"."CreationTime", "b"."CreatorUserId", "b"."IsActive", "b"."IsAvailable", "b"."LastModificationTime", "b"."LastModifierUserId"
+FROM "BookCopys" AS "b"
+WHERE "b"."BookCopyId" = @__p_0
+LIMIT 1 
+2024-07-11 15:21:24 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 15:21:24 [Information] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int64), @__bookCopy_BookId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "BorrowedBooks" AS "b"
+    INNER JOIN "BookCopys" AS "b0" ON "b"."BookCopyId" = "b0"."BookCopyId"
+    INNER JOIN "Books" AS "b1" ON "b0"."BookId" = "b1"."BookId"
+    WHERE CAST("b"."UserId" AS INTEGER) = @__userId_0 AND "b"."ReturnDate" IS NULL AND "b1"."BookId" = @__bookCopy_BookId_1) 
+2024-07-11 15:21:24 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 0 
+2024-07-11 15:21:24 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 0 
+2024-07-11 15:21:24 [Information] Executed DbCommand (2ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime), @p4='?' (DbType = Int64), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+UPDATE "BookCopys" SET "AcquisitionDate" = @p0, "BookId" = @p1, "CopyNumber" = @p2, "CreationTime" = @p3, "CreatorUserId" = @p4, "IsActive" = @p5, "IsAvailable" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8
+WHERE "BookCopyId" = @p9
+RETURNING 1; 
+2024-07-11 15:21:24 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 0 
+2024-07-11 15:21:24 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 0 
+2024-07-11 15:21:24 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BorrowedBookId", "b"."BookCopyId", "b"."BorrowDate", "b"."CreationTime", "b"."CreatorUserId", "b"."DueDate", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."ReturnDate", "b"."UserId"
+FROM "BorrowedBooks" AS "b"
+WHERE "b"."BorrowedBookId" = @__p_0
+LIMIT 1 
+2024-07-11 15:21:24 [Information] BaseRepository - InsertEntityAsync - Entering - User Id - 0 
+2024-07-11 15:21:24 [Error] Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "BorrowedBooks" ("BookCopyId", "BorrowDate", "CreationTime", "CreatorUserId", "DueDate", "LastModificationTime", "LastModifierUserId", "ReturnDate", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "BorrowedBookId"; 
+2024-07-11 15:21:24 [Error] An exception occurred in the database while saving changes for context type 'BookLibrary.Data.APIContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-07-11 15:21:25 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 138), @p3='?' (Size = 20), @p4='?', @p5='?' (Size = 40), @p6='?' (Size = 4583), @p7='?' (Size = 15), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-11 15:36:20 [Information] Now listening on: https://localhost:7066 
+2024-07-11 15:36:20 [Information] Now listening on: http://localhost:5232 
+2024-07-11 15:36:20 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 15:36:20 [Information] Hosting environment: Development 
+2024-07-11 15:36:20 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 16:05:21 [Information] Executed DbCommand (19ms) [Parameters=[@p0='?' (Size = 699), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:05:21 [Information] Valid Consumers - localhost 
+2024-07-11 16:05:21 [Information] Referer Value - localhost 
+2024-07-11 16:05:21 [Information] Entering Login Post 
+2024-07-11 16:05:21 [Information] BaseRepository - Get - Entering 
+2024-07-11 16:05:21 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:05:21 [Information] Executed DbCommand (1ms) [Parameters=[@__Trim_0='?' (Size = 15)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE "u"."IsActive" = 1 AND trim(lower("u"."Email")) = @__Trim_0 
+2024-07-11 16:05:22 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 0 
+2024-07-11 16:05:22 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 0 
+2024-07-11 16:05:22 [Information] Executed DbCommand (2ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (Size = 348), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 5), @p4='?' (Size = 15), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (Size = 70), @p10='?' (Size = 36), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:05:22 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 0 
+2024-07-11 16:05:22 [Information] Authenticated Login 
+2024-07-11 16:05:58 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1045), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 38), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:05:58 [Information] Valid Consumers - localhost 
+2024-07-11 16:05:58 [Information] Referer Value - localhost 
+2024-07-11 16:05:58 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 53), @p3='?' (Size = 38), @p4='?', @p5='?' (Size = 34), @p6='?' (Size = 554), @p7='?' (Size = 15), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-11 16:07:04 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1045), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 38), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:07:04 [Information] Valid Consumers - localhost 
+2024-07-11 16:07:04 [Information] Referer Value - localhost 
+2024-07-11 16:07:04 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 53), @p3='?' (Size = 38), @p4='?', @p5='?' (Size = 34), @p6='?' (Size = 554), @p7='?' (Size = 15), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-11 16:09:31 [Information] Now listening on: https://localhost:7066 
+2024-07-11 16:09:31 [Information] Now listening on: http://localhost:5232 
+2024-07-11 16:09:31 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 16:09:31 [Information] Hosting environment: Development 
+2024-07-11 16:09:31 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 16:09:59 [Information] Executed DbCommand (25ms) [Parameters=[@p0='?' (Size = 1045), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 38), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:09:59 [Information] Valid Consumers - localhost 
+2024-07-11 16:09:59 [Information] Referer Value - localhost 
+2024-07-11 16:10:08 [Information] Entering RegisterUser 
+2024-07-11 16:10:08 [Information] BaseRepository - Get - Entering 
+2024-07-11 16:10:08 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:10:10 [Information] Executed DbCommand (8ms) [Parameters=[@__email_0='?' (Size = 14)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE trim(lower("u"."Email")) = @__email_0 
+2024-07-11 16:10:10 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:10:10 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 4 
+2024-07-11 16:10:10 [Information] Executed DbCommand (5ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?', @p4='?' (Size = 14), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?', @p10='?', @p11='?' (Size = 32), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:10:10 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 4 
+2024-07-11 16:10:10 [Information] Leaving RegisterUser 
+2024-07-11 16:11:01 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1076), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 35), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:11:01 [Information] Valid Consumers - localhost 
+2024-07-11 16:11:01 [Information] Referer Value - localhost 
+2024-07-11 16:11:01 [Information] Entering UpdateUserLogin Post 
+2024-07-11 16:11:01 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:11:01 [Information] Executed DbCommand (0ms) [Parameters=[@__request_RegistrationCode_0='?' (Size = 32)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId"
+FROM "Users" AS "u"
+WHERE "u"."RegistrationCode" = @__request_RegistrationCode_0
+LIMIT 1 
+2024-07-11 16:11:01 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:11:01 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 4 
+2024-07-11 16:11:01 [Information] Executed DbCommand (0ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 4), @p4='?' (Size = 14), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (Size = 70), @p10='?', @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:11:01 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 4 
+2024-07-11 16:11:01 [Information] Updated User Login Details 
+2024-07-11 16:11:14 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1075), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:11:14 [Information] Valid Consumers - localhost 
+2024-07-11 16:11:14 [Information] Referer Value - localhost 
+2024-07-11 16:11:14 [Information] Entering Login Post 
+2024-07-11 16:11:14 [Information] BaseRepository - Get - Entering 
+2024-07-11 16:11:14 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:11:14 [Information] Executed DbCommand (1ms) [Parameters=[@__Trim_0='?' (Size = 14)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE "u"."IsActive" = 1 AND trim(lower("u"."Email")) = @__Trim_0 
+2024-07-11 16:11:14 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:11:14 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 4 
+2024-07-11 16:11:14 [Information] Executed DbCommand (0ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (Size = 345), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 4), @p4='?' (Size = 14), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (Size = 70), @p10='?' (Size = 36), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:11:14 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 4 
+2024-07-11 16:11:14 [Information] Authenticated Login 
+2024-07-11 16:12:03 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 26), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:12:03 [Information] Valid Consumers - localhost 
+2024-07-11 16:12:03 [Information] Referer Value - localhost 
+2024-07-11 16:12:03 [Information] Entering AddOrUpdateBook 
+2024-07-11 16:12:03 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:12:03 [Information] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:12:03 [Information] BaseRepository - InsertEntityAsync - Entering - User Id - 4 
+2024-07-11 16:12:03 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 9), @p4='?' (Size = 7), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int64), @p8='?' (DbType = Int32), @p9='?' (Size = 13)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Books" ("Author", "CreationTime", "CreatorUserId", "Genre", "ISBN", "IsActive", "LastModificationTime", "LastModifierUserId", "PublicationYear", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)
+RETURNING "BookId"; 
+2024-07-11 16:12:03 [Information] BaseRepository - InsertEntityAsync - Completed - User Id - 4 
+2024-07-11 16:12:03 [Information] Leaving AddOrUpdateBook 
+2024-07-11 16:12:42 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 26), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:12:42 [Information] Valid Consumers - localhost 
+2024-07-11 16:12:42 [Information] Referer Value - localhost 
+2024-07-11 16:12:52 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 26), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:12:52 [Information] Valid Consumers - localhost 
+2024-07-11 16:12:52 [Information] Referer Value - localhost 
+2024-07-11 16:12:52 [Information] Entering AddOrUpdateBook 
+2024-07-11 16:13:37 [Information] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 26), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:13:37 [Information] Valid Consumers - localhost 
+2024-07-11 16:13:37 [Information] Referer Value - localhost 
+2024-07-11 16:13:37 [Information] Entering AddOrUpdateBook 
+2024-07-11 16:13:37 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:13:37 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:13:37 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 4 
+2024-07-11 16:13:37 [Information] Executed DbCommand (0ms) [Parameters=[@p10='?' (DbType = Int32), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 16), @p4='?' (Size = 7), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int64), @p8='?' (DbType = Int32), @p9='?' (Size = 20)], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "Author" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "Genre" = @p3, "ISBN" = @p4, "IsActive" = @p5, "LastModificationTime" = @p6, "LastModifierUserId" = @p7, "PublicationYear" = @p8, "Title" = @p9
+WHERE "BookId" = @p10
+RETURNING 1; 
+2024-07-11 16:13:37 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 4 
+2024-07-11 16:13:37 [Information] Leaving AddOrUpdateBook 
+2024-07-11 16:14:07 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 30), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:14:07 [Information] Valid Consumers - localhost 
+2024-07-11 16:14:07 [Information] Referer Value - localhost 
+2024-07-11 16:14:07 [Information] Entering AddOrUpdateBookCopy 
+2024-07-11 16:14:08 [Information] Executed DbCommand (5ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 105), @p3='?' (Size = 30), @p4='?', @p5='?' (Size = 22), @p6='?' (Size = 2990), @p7='?' (Size = 131), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-11 16:16:18 [Information] Now listening on: https://localhost:7066 
+2024-07-11 16:16:18 [Information] Now listening on: http://localhost:5232 
+2024-07-11 16:16:18 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 16:16:18 [Information] Hosting environment: Development 
+2024-07-11 16:16:18 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 16:16:50 [Information] Executed DbCommand (31ms) [Parameters=[@p0='?' (Size = 1080), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 30), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:16:50 [Information] Valid Consumers - localhost 
+2024-07-11 16:16:50 [Information] Referer Value - localhost 
+2024-07-11 16:17:57 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1072), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:17:57 [Information] Valid Consumers - localhost 
+2024-07-11 16:17:57 [Information] Referer Value - localhost 
+2024-07-11 16:17:57 [Information] Entering Login Post 
+2024-07-11 16:17:57 [Information] BaseRepository - Get - Entering 
+2024-07-11 16:17:57 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:17:57 [Information] Executed DbCommand (2ms) [Parameters=[@__Trim_0='?' (Size = 15)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE "u"."IsActive" = 1 AND trim(lower("u"."Email")) = @__Trim_0 
+2024-07-11 16:17:57 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 5 
+2024-07-11 16:17:57 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 5 
+2024-07-11 16:17:57 [Information] Executed DbCommand (4ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (Size = 348), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 5), @p4='?' (Size = 15), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (Size = 70), @p10='?' (Size = 36), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:17:57 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 5 
+2024-07-11 16:17:57 [Information] Authenticated Login 
+2024-07-11 16:18:33 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 30), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:18:33 [Information] Valid Consumers - localhost 
+2024-07-11 16:18:33 [Information] Referer Value - localhost 
+2024-07-11 16:18:33 [Information] Entering AddOrUpdateBookCopy 
+2024-07-11 16:18:33 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:18:33 [Information] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookCopyId", "b"."AcquisitionDate", "b"."BookId", "b"."CopyNumber", "b"."CreationTime", "b"."CreatorUserId", "b"."IsActive", "b"."IsAvailable", "b"."LastModificationTime", "b"."LastModifierUserId"
+FROM "BookCopys" AS "b"
+WHERE "b"."BookCopyId" = @__p_0
+LIMIT 1 
+2024-07-11 16:18:33 [Information] BaseRepository - InsertEntityAsync - Entering - User Id - 4 
+2024-07-11 16:18:33 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime), @p4='?' (DbType = Int64), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "BookCopys" ("AcquisitionDate", "BookId", "CopyNumber", "CreationTime", "CreatorUserId", "IsActive", "IsAvailable", "LastModificationTime", "LastModifierUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "BookCopyId"; 
+2024-07-11 16:18:33 [Information] BaseRepository - InsertEntityAsync - Completed - User Id - 4 
+2024-07-11 16:18:33 [Information] Leaving AddOrUpdateBookCopy 
+2024-07-11 16:21:00 [Information] Now listening on: https://localhost:7066 
+2024-07-11 16:21:00 [Information] Now listening on: http://localhost:5232 
+2024-07-11 16:21:00 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 16:21:00 [Information] Hosting environment: Development 
+2024-07-11 16:21:00 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 16:21:30 [Information] Executed DbCommand (19ms) [Parameters=[@p0='?' (Size = 699), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:21:30 [Information] Valid Consumers - localhost 
+2024-07-11 16:21:30 [Information] Referer Value - localhost 
+2024-07-11 16:21:31 [Information] Entering Login Post 
+2024-07-11 16:21:31 [Information] BaseRepository - Get - Entering 
+2024-07-11 16:21:31 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:21:31 [Information] Executed DbCommand (1ms) [Parameters=[@__Trim_0='?' (Size = 15)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE "u"."IsActive" = 1 AND trim(lower("u"."Email")) = @__Trim_0 
+2024-07-11 16:21:31 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 0 
+2024-07-11 16:21:31 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 0 
+2024-07-11 16:21:31 [Information] Executed DbCommand (1ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (Size = 348), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 5), @p4='?' (Size = 15), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (Size = 70), @p10='?' (Size = 36), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:21:31 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 0 
+2024-07-11 16:21:31 [Information] Authenticated Login 
+2024-07-11 16:22:07 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 26), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:22:07 [Information] Valid Consumers - localhost 
+2024-07-11 16:22:07 [Information] Referer Value - localhost 
+2024-07-11 16:22:07 [Information] Entering AddOrUpdateBook 
+2024-07-11 16:22:07 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:22:07 [Information] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:22:07 [Information] BaseRepository - InsertEntityAsync - Entering - User Id - 4 
+2024-07-11 16:22:07 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 6), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 6), @p4='?' (Size = 6), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int64), @p8='?' (DbType = Int32), @p9='?' (Size = 6)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Books" ("Author", "CreationTime", "CreatorUserId", "Genre", "ISBN", "IsActive", "LastModificationTime", "LastModifierUserId", "PublicationYear", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)
+RETURNING "BookId"; 
+2024-07-11 16:22:07 [Information] BaseRepository - InsertEntityAsync - Completed - User Id - 4 
+2024-07-11 16:22:07 [Information] Leaving AddOrUpdateBook 
+2024-07-11 16:22:45 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1083), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 30), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:22:45 [Information] Valid Consumers - localhost 
+2024-07-11 16:22:45 [Information] Referer Value - localhost 
+2024-07-11 16:22:45 [Information] Entering AddOrUpdateBookCopy 
+2024-07-11 16:22:45 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 4 
+2024-07-11 16:22:45 [Information] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookCopyId", "b"."AcquisitionDate", "b"."BookId", "b"."CopyNumber", "b"."CreationTime", "b"."CreatorUserId", "b"."IsActive", "b"."IsAvailable", "b"."LastModificationTime", "b"."LastModifierUserId"
+FROM "BookCopys" AS "b"
+WHERE "b"."BookCopyId" = @__p_0
+LIMIT 1 
+2024-07-11 16:22:45 [Information] BaseRepository - InsertEntityAsync - Entering - User Id - 4 
+2024-07-11 16:22:45 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime), @p4='?' (DbType = Int64), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "BookCopys" ("AcquisitionDate", "BookId", "CopyNumber", "CreationTime", "CreatorUserId", "IsActive", "IsAvailable", "LastModificationTime", "LastModifierUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "BookCopyId"; 
+2024-07-11 16:22:45 [Information] BaseRepository - InsertEntityAsync - Completed - User Id - 4 
+2024-07-11 16:22:45 [Information] Leaving AddOrUpdateBookCopy 
+2024-07-11 16:22:58 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1045), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 27), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:22:58 [Information] Valid Consumers - localhost 
+2024-07-11 16:22:58 [Information] Referer Value - localhost 
+2024-07-11 16:22:58 [Information] Entering GetAllBookCopy 
+2024-07-11 16:22:58 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:22:58 [Information] Executed DbCommand (0ms) [Parameters=[@__bookId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookCopyId", "b"."AcquisitionDate", "b"."BookId", "b"."CopyNumber", "b"."CreationTime", "b"."CreatorUserId", "b"."IsActive", "b"."IsAvailable", "b"."LastModificationTime", "b"."LastModifierUserId"
+FROM "BookCopys" AS "b"
+WHERE "b"."BookId" = @__bookId_0 
+2024-07-11 16:22:58 [Information] Leaving GetAllBookCopy 
+2024-07-11 16:23:16 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:16 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:16 [Information] Referer Value - localhost 
+2024-07-11 16:23:16 [Information] Entering DeleteBook 
+2024-07-11 16:23:16 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:16 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:23:16 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:23:16 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:23:16 [Information] Leaving DeleteBook 
+2024-07-11 16:23:21 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:21 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:21 [Information] Referer Value - localhost 
+2024-07-11 16:23:21 [Information] Entering DeleteBook 
+2024-07-11 16:23:21 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:21 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:23:21 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:23:21 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:23:21 [Information] Leaving DeleteBook 
+2024-07-11 16:23:21 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:21 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:21 [Information] Referer Value - localhost 
+2024-07-11 16:23:21 [Information] Entering DeleteBook 
+2024-07-11 16:23:21 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:21 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:23:21 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:23:21 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:23:21 [Information] Leaving DeleteBook 
+2024-07-11 16:23:22 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:22 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:22 [Information] Referer Value - localhost 
+2024-07-11 16:23:22 [Information] Entering DeleteBook 
+2024-07-11 16:23:22 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:22 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:23:22 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:23:22 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:23:22 [Information] Leaving DeleteBook 
+2024-07-11 16:23:23 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:23 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:23 [Information] Referer Value - localhost 
+2024-07-11 16:23:23 [Information] Entering DeleteBook 
+2024-07-11 16:23:23 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:23 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:23:23 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:23:23 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:23:23 [Information] Leaving DeleteBook 
+2024-07-11 16:23:23 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:23 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:23 [Information] Referer Value - localhost 
+2024-07-11 16:23:23 [Information] Entering DeleteBook 
+2024-07-11 16:23:23 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:23 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:23:23 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:23:23 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:23:23 [Information] Leaving DeleteBook 
+2024-07-11 16:23:49 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:23:49 [Information] Valid Consumers - localhost 
+2024-07-11 16:23:49 [Information] Referer Value - localhost 
+2024-07-11 16:23:49 [Information] Entering DeleteBook 
+2024-07-11 16:23:56 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 6 
+2024-07-11 16:23:56 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:24:26 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:24:40 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:24:40 [Information] Leaving DeleteBook 
+2024-07-11 16:24:45 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:24:45 [Information] Valid Consumers - localhost 
+2024-07-11 16:24:45 [Information] Referer Value - localhost 
+2024-07-11 16:24:45 [Information] Entering DeleteBook 
+2024-07-11 16:24:51 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:24:51 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:24:51 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:24:51 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:24:51 [Information] Leaving DeleteBook 
+2024-07-11 16:24:53 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:24:53 [Information] Valid Consumers - localhost 
+2024-07-11 16:24:53 [Information] Referer Value - localhost 
+2024-07-11 16:24:53 [Information] Entering DeleteBook 
+2024-07-11 16:24:53 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:24:53 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:24:53 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:24:53 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:24:53 [Information] Leaving DeleteBook 
+2024-07-11 16:25:04 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:25:04 [Information] Valid Consumers - localhost 
+2024-07-11 16:25:04 [Information] Referer Value - localhost 
+2024-07-11 16:25:04 [Information] Entering DeleteBook 
+2024-07-11 16:25:07 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:25:07 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:25:17 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:25:17 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:25:26 [Information] Leaving DeleteBook 
+2024-07-11 16:26:12 [Information] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:26:12 [Information] Valid Consumers - localhost 
+2024-07-11 16:26:12 [Information] Referer Value - localhost 
+2024-07-11 16:26:12 [Information] Entering DeleteBook 
+2024-07-11 16:26:14 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:26:14 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:26:14 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:26:54 [Warning] BaseRepository - SoftDeleteAsync - IsActive property not found or not a boolean. 
+2024-07-11 16:26:54 [Information] Leaving DeleteBook 
+2024-07-11 16:26:56 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:26:56 [Information] Valid Consumers - localhost 
+2024-07-11 16:26:56 [Information] Referer Value - localhost 
+2024-07-11 16:26:56 [Information] Entering DeleteBook 
+2024-07-11 16:27:00 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:27:00 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:27:27 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:28:55 [Information] Now listening on: https://localhost:7066 
+2024-07-11 16:28:55 [Information] Now listening on: http://localhost:5232 
+2024-07-11 16:28:55 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 16:28:56 [Information] Hosting environment: Development 
+2024-07-11 16:28:56 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-11 16:29:14 [Information] Executed DbCommand (18ms) [Parameters=[@p0='?' (Size = 699), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?' (Size = 25), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:29:14 [Information] Valid Consumers - localhost 
+2024-07-11 16:29:14 [Information] Referer Value - localhost 
+2024-07-11 16:29:14 [Information] Entering Login Post 
+2024-07-11 16:29:14 [Information] BaseRepository - Get - Entering 
+2024-07-11 16:29:14 [Information] BaseRepository - GetAll - Entering 
+2024-07-11 16:29:15 [Information] Executed DbCommand (2ms) [Parameters=[@__Trim_0='?' (Size = 15)], CommandType='Text', CommandTimeout='30']
+SELECT "u"."UserId", "u"."AccessToken", "u"."CreationTime", "u"."CreatorUserId", "u"."DisplayName", "u"."Email", "u"."IsActive", "u"."LastLoginTime", "u"."LastModificationTime", "u"."LastModifierUserId", "u"."Password", "u"."RefreshToken", "u"."RegistrationCode", "u"."RegistrationCodeTime", "u"."RoleId", "r"."RoleId", "r"."Name"
+FROM "Users" AS "u"
+INNER JOIN "Roles" AS "r" ON "u"."RoleId" = "r"."RoleId"
+WHERE "u"."IsActive" = 1 AND trim(lower("u"."Email")) = @__Trim_0 
+2024-07-11 16:29:15 [Information] BaseRepository - InsertOrUpdateAsync (int) - Entering - User Id - 0 
+2024-07-11 16:29:15 [Information] BaseRepository - UpdateEntityAsync - Entering - User Id - 0 
+2024-07-11 16:29:15 [Information] Executed DbCommand (3ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (Size = 348), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (Size = 5), @p4='?' (Size = 15), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (Size = 70), @p10='?' (Size = 36), @p11='?', @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+UPDATE "Users" SET "AccessToken" = @p0, "CreationTime" = @p1, "CreatorUserId" = @p2, "DisplayName" = @p3, "Email" = @p4, "IsActive" = @p5, "LastLoginTime" = @p6, "LastModificationTime" = @p7, "LastModifierUserId" = @p8, "Password" = @p9, "RefreshToken" = @p10, "RegistrationCode" = @p11, "RegistrationCodeTime" = @p12, "RoleId" = @p13
+WHERE "UserId" = @p14
+RETURNING 1; 
+2024-07-11 16:29:15 [Information] BaseRepository - UpdateEntityAsync - Completed - User Id - 0 
+2024-07-11 16:29:15 [Information] Authenticated Login 
+2024-07-11 16:29:34 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:29:34 [Information] Valid Consumers - localhost 
+2024-07-11 16:29:34 [Information] Referer Value - localhost 
+2024-07-11 16:29:34 [Information] Entering DeleteBook 
+2024-07-11 16:29:42 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:29:42 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:29:42 [Information] BaseRepository - SoftDeleteAsync - Entering - User Id - 4 
+2024-07-11 16:29:48 [Information] BaseRepository - SoftDeleteAsync - IsActive property set to false. 
+2024-07-11 16:29:49 [Information] Executed DbCommand (0ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+UPDATE "Books" SET "IsActive" = @p0, "LastModificationTime" = @p1, "LastModifierUserId" = @p2
+WHERE "BookId" = @p3
+RETURNING 1; 
+2024-07-11 16:29:49 [Information] BaseRepository - SoftDeleteAsync - Entity updated and committed. 
+2024-07-11 16:29:49 [Information] Leaving DeleteBook 
+2024-07-11 16:29:51 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 23), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:29:51 [Information] Valid Consumers - localhost 
+2024-07-11 16:29:51 [Information] Referer Value - localhost 
+2024-07-11 16:29:51 [Information] Entering DeleteBook 
+2024-07-11 16:30:01 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:30:01 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:30:01 [Information] Leaving DeleteBook 
+2024-07-11 16:30:14 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 27), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:30:14 [Information] Valid Consumers - localhost 
+2024-07-11 16:30:14 [Information] Referer Value - localhost 
+2024-07-11 16:30:14 [Information] Entering DeleteBookCopy 
+2024-07-11 16:30:14 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 9 
+2024-07-11 16:30:14 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:30:20 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 27), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:30:20 [Information] Valid Consumers - localhost 
+2024-07-11 16:30:20 [Information] Referer Value - localhost 
+2024-07-11 16:30:20 [Information] Entering DeleteBookCopy 
+2024-07-11 16:30:20 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 8 
+2024-07-11 16:30:20 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:30:27 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 1022), @p1='?' (Size = 14), @p2='?' (Size = 6), @p3='?' (Size = 27), @p4='?', @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-11 16:30:27 [Information] Valid Consumers - localhost 
+2024-07-11 16:30:27 [Information] Referer Value - localhost 
+2024-07-11 16:30:27 [Information] Entering DeleteBookCopy 
+2024-07-11 16:30:27 [Information] BaseRepository - GetByIdAsync (int) - Entering - Id: 7 
+2024-07-11 16:30:27 [Information] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+FROM "Books" AS "b"
+WHERE "b"."BookId" = @__p_0
+LIMIT 1 
+2024-07-11 16:30:27 [Information] Leaving DeleteBookCopy 
+2024-07-11 16:45:39 [Information] Now listening on: https://localhost:7066 
+2024-07-11 16:45:39 [Information] Now listening on: http://localhost:5232 
+2024-07-11 16:45:39 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-11 16:45:39 [Information] Hosting environment: Development 
+2024-07-11 16:45:39 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 

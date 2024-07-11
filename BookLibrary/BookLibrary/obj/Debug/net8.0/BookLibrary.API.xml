@@ -4,6 +4,61 @@
         <name>BookLibrary.API</name>
     </assembly>
     <members>
+        <member name="T:BookLibrary.API.Controllers.AdminController">
+            <summary>
+            Controller for handling admin-related operations in the Book Library API.
+            </summary>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.#ctor(BookLibrary.Business.Abstractions.IBookService,Microsoft.Extensions.Logging.ILogger{BookLibrary.API.Controllers.AuthenticationController},BookLibrary.Business.Abstractions.IAuthenticationService)">
+            <summary>
+            Initializes a new instance of the AdminController.
+            </summary>
+            <param name="bookService">The book service.</param>
+            <param name="logger">The logger.</param>
+            <param name="authenticationService">The authentication service.</param>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.AddOrUpdateBook(BookLibrary.Models.BookAdd)">
+            <summary>
+            Adds or updates a book in the library.
+            </summary>
+            <param name="req">The book details to add or update.</param>
+            <returns>A response message containing the added or updated book.</returns>    
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.GetAllBookCopy(System.Int32)">
+            <summary>
+            Retrieves all copies of a specific book.
+            </summary>
+            <param name="bookId">The ID of the book.</param>
+            <returns>A response message containing a list of book copies.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.AddOrUpdateBookCopy(BookLibrary.Models.BookCopyAdd)">
+            <summary>
+            Adds or updates a copy of a book in the library.
+            </summary>
+            <param name="req">The book copy details to add or update.</param>
+            <returns>A response message containing the added or updated book copy.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.DeleteBook(System.Int32)">
+            <summary>
+            Deletes a book from the library.
+            </summary>
+            <param name="bookId">The ID of the book to delete.</param>
+            <returns>A response message indicating whether the deletion was successful.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.DeleteBookCopy(System.Int32)">
+            <summary>
+            Deletes a copy of a book from the library.
+            </summary>
+            <param name="bookCopyId">The ID of the book copy to delete.</param>
+            <returns>A response message indicating whether the deletion was successful.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.AdminController.RegisterUser(System.String)">
+            <summary>
+            Registers a new user with the specified email.
+            </summary>
+            <param name="email">The email of the user to be registered.</param>
+            <returns>A response message containing the registered user details.</returns>
+        </member>
         <member name="T:BookLibrary.API.Controllers.AuthenticationController">
             <summary>
             Controller responsible for authentication operations.
@@ -21,7 +76,7 @@
             Authenticates a user based on the provided credentials.
             </summary>
             <param name="authenticateRequest">The credentials to authenticate.</param>
-            <returns>An IActionResult representing the authentication result.</returns>
+            <returns>An IActionResult representing the authentication result.</returns>       
         </member>
         <member name="M:BookLibrary.API.Controllers.AuthenticationController.UpdateLoginDetails(BookLibrary.Models.UserAdd)">
             <summary>
@@ -29,13 +84,6 @@
             </summary>
             <param name="request">The details to update for the user.</param>
             <returns>An IActionResult representing the result of the update operation.</returns>
-        </member>
-        <member name="M:BookLibrary.API.Controllers.AuthenticationController.RegisterUser(System.String)">
-            <summary>
-            Registers a new user with the specified email.
-            </summary>
-            <param name="email">The email of the user to be registered.</param>
-            <returns>A response message containing the registered user details.</returns>
         </member>
         <member name="M:BookLibrary.API.Controllers.AuthenticationController.ForgotPassword(System.String)">
             <summary>
@@ -52,12 +100,50 @@
             <param name="newPassword">The new password.</param>
             <returns>An IActionResult containing the result of the password update.</returns>
         </member>
+        <member name="T:BookLibrary.API.Controllers.BookController">
+            <summary>
+            Controller for handling book-related operations in the Book Library API.
+            </summary>
+        </member>
         <member name="M:BookLibrary.API.Controllers.BookController.#ctor(BookLibrary.Business.Abstractions.IBookService,Microsoft.Extensions.Logging.ILogger{BookLibrary.API.Controllers.AuthenticationController})">
             <summary>
-            Initializes a new instance of the bookController.
+            Initializes a new instance of the BookController.
             </summary>
-            <param name="bookService">The bookService service.</param>
+            <param name="bookService">The book service.</param>
             <param name="logger">The logger.</param>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.BookController.GetBooks(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Boolean,System.String)">
+            <summary>
+            Retrieves a paged list of books.
+            </summary>
+            <param name="pageNumber">The page number to retrieve.</param>
+            <param name="pageSize">The number of items per page.</param>
+            <param name="orderBy">The field to order the results by. Defaults to "BookId".</param>
+            <param name="orderDirection">The direction of ordering. True for ascending, false for descending.</param>
+            <param name="search">The search string to filter books.</param>
+            <returns>A response message containing a paged list of books.</returns>       
+        </member>
+        <member name="M:BookLibrary.API.Controllers.BookController.BorrowBook(BookLibrary.Models.BorrowBookReq)">
+            <summary>
+            Borrows a book for a user.
+            </summary>
+            <param name="req">The borrow book request details.</param>
+            <returns>A response message containing the borrowed book details.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.BookController.GetUserBorrowedBook(System.Int32,System.Boolean)">
+            <summary>
+            Retrieves the list of books borrowed by a user.
+            </summary>
+            <param name="userId">The ID of the user.</param>
+            <param name="isReturned">Flag to indicate whether to retrieve returned or currently borrowed books.</param>
+            <returns>A response message containing a list of borrowed books.</returns>
+        </member>
+        <member name="M:BookLibrary.API.Controllers.BookController.ReturnBook(System.Int32)">
+            <summary>
+            Returns a borrowed book.
+            </summary>
+            <param name="borrowedBookId">The ID of the borrowed book to return.</param>
+            <returns>A response message containing the returned book details.</returns>
         </member>
         <member name="T:BookLibrary.API.Extensions.ClaimsPrincipalExtensions">
             <summary>

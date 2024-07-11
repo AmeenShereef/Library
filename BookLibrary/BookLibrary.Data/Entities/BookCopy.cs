@@ -15,7 +15,7 @@ namespace BookLibrary.Data.Entities
         public int CopyNumber { get; set; }       
         public DateTime AcquisitionDate { get; set; }
         public bool IsAvailable { get; set; }
-
+        public bool IsActive { get; set; }
         public Book Book { get; set; } = default!;
        
     }

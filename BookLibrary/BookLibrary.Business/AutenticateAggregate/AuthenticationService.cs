@@ -16,18 +16,12 @@ using System.Text;
 
 namespace BookLibrary.Business.AuthenticateAggregate
 {
-    /// <summary>
-    /// Service responsible for handling authentication-related operations.
-    /// </summary>
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IAuthenticationRepository _authenticationRepository;
         private readonly AppSettings _appSettings;
         private readonly AuthenticationSettings _authenticationSettings;
 
-        /// <summary>
-        /// Initializes a new instance of the AuthenticationService.
-        /// </summary>
         public AuthenticationService(
             IAuthenticationRepository authenticationRepository,
             IOptions<AppSettings> appSettings,
@@ -38,42 +32,37 @@ namespace BookLibrary.Business.AuthenticateAggregate
             _authenticationSettings = authenticationSettings.Value;
         }
 
-        /// <summary>
-        /// Authenticates a user based on the provided credentials.
-        /// </summary>
-        /// <param name="req">The authentication request.</param>
-        /// <returns>A UserDto if authentication is successful; otherwise, null.</returns>
         public UserDto? AuthenticateUser(AuthenticateRequest req)
         {
+            // Validate the authentication request
             new ValidatorExtensions.GenericValidation<AuthenticateRequest, AuthenticationValidator>().Validate(req);
 
+            // Find the user by email (case-insensitive)
             var user = _authenticationRepository
                 .Get(u => u.IsActive == true && u.Email.ToLower().Trim() == req.Username.ToLower().Trim(), includes: x => x.Role)
                 .FirstOrDefault();
 
+            // Check if user exists and password is valid
             if (user == null || !PasswordHash.ValidatePassword(req.Password, user.Password ?? ""))
                 return null;
 
+            // Generate JWT token and update user information
             var token = GenerateJwtToken(user);
-
             user.AccessToken = new JwtSecurityTokenHandler().WriteToken(token);
             user.RefreshToken = Guid.NewGuid().ToString();
             user.LastLoginTime = DateTime.Now;
             _authenticationRepository.InsertOrUpdateAsync(user.UserId, user);
 
+            // Return user data as DTO
             return user.Adapt<UserDto>();
         }
 
-        /// <summary>
-        /// Registers a new user with the specified email.
-        /// </summary>
-        /// <param name="email">The email of the user to be registered.</param>
-        /// <returns>A response message containing the registered user details.</returns>
         public async Task<ResponseMessage<UserDto>> RegisterUser(string email)
         {
             var response = new ResponseMessage<UserDto>();
             email = email.ToLower().Trim();
 
+            // Check if user already exists
             var user = _authenticationRepository
                 .Get(x => x.Email.ToLower().Trim() == email, includes: x => x.Role)
                 .FirstOrDefault();
@@ -81,19 +70,17 @@ namespace BookLibrary.Business.AuthenticateAggregate
             if (user != null)
                 return HandleExistingUser(user, response);
 
+            // Create new user if not exists
             return await CreateNewUser(email, response);
         }
 
-        /// <summary>
-        /// Updates the login details of a user.
-        /// </summary>
-        /// <param name="request">The details to update for the user.</param>
-        /// <returns>A response message indicating the result of the update operation.</returns>
         public async Task<ResponseMessage<object>> UpdateUserLogin(UserAdd request)
         {
+            // Validate the user add request
             new ValidatorExtensions.GenericValidation<UserAdd, UserAddValidator>().Validate(request);
             var response = new ResponseMessage<object>();
 
+            // Find user by registration code
             var login = _authenticationRepository
                 .Get(l => l.RegistrationCode == request.RegistrationCode)
                 .FirstOrDefault();
@@ -104,6 +91,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
                 return response;
             }
 
+            // Update user login details
             login.DisplayName = request.DisplayName;
             login.Password = PasswordHash.CreateHash(request.Password);
             login.IsActive = true;
@@ -117,15 +105,11 @@ namespace BookLibrary.Business.AuthenticateAggregate
             return response;
         }
 
-        /// <summary>
-        /// Initiates the forgot password process for a user.
-        /// </summary>
-        /// <param name="email">The email address of the user requesting a password reset.</param>
-        /// <returns>A response message indicating the result of the forgot password request.</returns>
         public async Task<ResponseMessage<string>> ForgotPassword(string email)
         {
             var response = new ResponseMessage<string>();
 
+            // Find user by email
             var user = _authenticationRepository.Get(x => x.Email == email).FirstOrDefault();
             if (user == null)
             {
@@ -133,9 +117,11 @@ namespace BookLibrary.Business.AuthenticateAggregate
                 return response;
             }
 
+            // Generate new registration code
             var token = Guid.NewGuid().ToString("N");
             //TODO: send mail with token  
 
+            // Update user with new registration code
             user.RegistrationCode = token;
             user.RegistrationCodeTime = DateTime.Now;
             await _authenticationRepository.InsertOrUpdateAsync(user.UserId, user);
@@ -145,14 +131,9 @@ namespace BookLibrary.Business.AuthenticateAggregate
             return response;
         }
 
-        /// <summary>
-        /// Updates the password for a user using a reset token.
-        /// </summary>
-        /// <param name="token">The reset token.</param>
-        /// <param name="newPassword">The new password.</param>
-        /// <returns>A response message indicating the result of the password update.</returns>
         public async Task<ResponseMessage<bool>> UpdatePassword(string token, string newPassword)
         {
+            // Find user by registration code
             var user = _authenticationRepository.Get(x => x.RegistrationCode == token).FirstOrDefault();
 
             if (user == null)
@@ -161,6 +142,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
             if (IsRegistrationCodeExpired(user))
                 return new ResponseMessage<bool> { Data = false, Message = "Registration Code Expired" };
 
+            // Update user password and reset registration code
             user.Password = PasswordHash.CreateHash(newPassword);
             user.RegistrationCode = null;
             user.RegistrationCodeTime = null;
@@ -172,6 +154,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
 
         private JwtSecurityToken GenerateJwtToken(User user)
         {
+            // Create claims for the token
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Email),
@@ -180,6 +163,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
                 new Claim("expiryTime", DateTime.Now.AddMinutes(_appSettings.TokenValidity).ToString())
             };
 
+            // Create and return the JWT token
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtBearer.SecurityKey));
             return new JwtSecurityToken(
                 issuer: _authenticationSettings.JwtBearer.Issuer,
@@ -196,6 +180,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
             {
                 if (IsRegistrationCodeExpired(user))
                 {
+                    // Generate new registration code if expired
                     user.RegistrationCode = Guid.NewGuid().ToString("N");
                     user.RegistrationCodeTime = DateTime.Now;
                     _authenticationRepository.InsertOrUpdateAsync(user.UserId, user);
@@ -218,7 +203,10 @@ namespace BookLibrary.Business.AuthenticateAggregate
 
         private async Task<ResponseMessage<UserDto>> CreateNewUser(string email, ResponseMessage<UserDto> response)
         {
+            // Get user role
             var roleId = _authenticationRepository.GetRole(UserRole.User.ToString()).RoleId;
+
+            // Create new user
             var newUser = new User
             {
                 Email = email,
@@ -236,6 +224,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
 
         private bool IsRegistrationCodeExpired(User user)
         {
+            // Check if registration code is expired based on app settings
             return user.RegistrationCode != null &&
                    user.RegistrationCodeTime.HasValue &&
                    DateTime.Now - user.RegistrationCodeTime.Value > TimeSpan.FromMinutes(_appSettings.RegistrationCodeValidity);
