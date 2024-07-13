@@ -14,7 +14,7 @@ namespace BookLibrary.Business.Abstractions
         ResponseMessage<List<BookCopyDto>> GetAllBookCopy(int bookId);
         ResponseMessage<PagedList<BookDto>> GetBooks(int? pageNumber, int? pageSize, string orderBy, bool orderDirection, string search);
         Task<ResponseMessage<BorrowedBookDto>> BorrowBook(BorrowBookReq req);
-        Task<ResponseMessage<List<BorrowedBookDto>>> GetUserBorrowedBook(int userId,bool isReturned);
+        Task<ResponseMessage<List<BorrowedBookDto>>> GetUserBorrowedBook(bool isReturned);
         Task<ResponseMessage<BorrowedBookDto>> ReturnBook(int borrowedBookId);
 
         //admin 

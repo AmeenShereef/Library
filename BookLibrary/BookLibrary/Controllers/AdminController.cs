@@ -97,7 +97,7 @@ namespace BookLibrary.API.Controllers
         public async Task<ResponseMessage<bool>> DeleteBookCopy(int bookCopyId)
         {
             _logger.LogInformation("Entering DeleteBookCopy");
-            var isDeleted = await _bookService.DeleteBook(bookCopyId);
+            var isDeleted = await _bookService.DeleteBookCopy(bookCopyId);
             _logger.LogInformation("Leaving DeleteBookCopy");
             return isDeleted;
         }

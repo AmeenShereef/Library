@@ -260,8 +260,9 @@ namespace BookLibrary.Business.BookAggregate
             };
         }
 
-        public async Task<ResponseMessage<List<BorrowedBookDto>>> GetUserBorrowedBook(int userId, bool isReturned)
+        public async Task<ResponseMessage<List<BorrowedBookDto>>> GetUserBorrowedBook(bool isReturned)
         {
+            var userId = _borrowBookRepository.GetUserId();
             // Retrieve borrowed books for the user
             var borBook = await _borrowBookRepository.GetAll()
                 .Where(x => x.UserId == userId && (isReturned ? x.ReturnDate != null : x.ReturnDate == null))

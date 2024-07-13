@@ -130,7 +130,7 @@
             <param name="req">The borrow book request details.</param>
             <returns>A response message containing the borrowed book details.</returns>
         </member>
-        <member name="M:BookLibrary.API.Controllers.BookController.GetUserBorrowedBook(System.Int32,System.Boolean)">
+        <member name="M:BookLibrary.API.Controllers.BookController.GetUserBorrowedBook(System.Boolean)">
             <summary>
             Retrieves the list of books borrowed by a user.
             </summary>

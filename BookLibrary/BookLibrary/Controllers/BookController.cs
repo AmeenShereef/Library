@@ -78,10 +78,10 @@ namespace BookLibrary.API.Controllers
         /// <param name="isReturned">Flag to indicate whether to retrieve returned or currently borrowed books.</param>
         /// <returns>A response message containing a list of borrowed books.</returns>
         [HttpGet("GetUserBorrowedBook")]
-        public Task<ResponseMessage<List<BorrowedBookDto>>> GetUserBorrowedBook(int userId, bool isReturned = false)
+        public Task<ResponseMessage<List<BorrowedBookDto>>> GetUserBorrowedBook(bool isReturned = false)
         {
             _logger.LogInformation("Entering GetUserBorrowedBook");
-            var book = _bookService.GetUserBorrowedBook(userId, isReturned);
+            var book = _bookService.GetUserBorrowedBook(isReturned);
             _logger.LogInformation("Leaving GetUserBorrowedBook");
             return book;
         }
