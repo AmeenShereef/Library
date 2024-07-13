@@ -8,9 +8,11 @@ using BookLibrary.Infrastructure.AppSettings;
 using BookLibrary.Models;
 using BookLibrary.Repositories.Abstractions;
 using Mapster;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -32,7 +34,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
             _authenticationSettings = authenticationSettings.Value;
         }
 
-        public UserDto? AuthenticateUser(AuthenticateRequest req)
+        public ResponseMessage<UserDto>? AuthenticateUser(AuthenticateRequest req)
         {
             // Validate the authentication request
             new ValidatorExtensions.GenericValidation<AuthenticateRequest, AuthenticationValidator>().Validate(req);
@@ -44,7 +46,12 @@ namespace BookLibrary.Business.AuthenticateAggregate
 
             // Check if user exists and password is valid
             if (user == null || !PasswordHash.ValidatePassword(req.Password, user.Password ?? ""))
-                return null;
+                return new ResponseMessage<UserDto>
+                {
+                    Success = false,
+                    StatusCode = (int)HttpStatusCode.Unauthorized,
+                    Message = "Unauthorized User"
+                };
 
             // Generate JWT token and update user information
             var token = GenerateJwtToken(user);
@@ -54,12 +61,17 @@ namespace BookLibrary.Business.AuthenticateAggregate
             _authenticationRepository.InsertOrUpdateAsync(user.UserId, user);
 
             // Return user data as DTO
-            return user.Adapt<UserDto>();
+            return new ResponseMessage<UserDto>
+            {
+                Data = user.Adapt<UserDto>(),
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Message = "User authenticated successfully"
+            };
         }
 
         public async Task<ResponseMessage<UserDto>> RegisterUser(string email)
-        {
-            var response = new ResponseMessage<UserDto>();
+        {           
             email = email.ToLower().Trim();
 
             // Check if user already exists
@@ -68,10 +80,10 @@ namespace BookLibrary.Business.AuthenticateAggregate
                 .FirstOrDefault();
 
             if (user != null)
-                return HandleExistingUser(user, response);
+                return HandleExistingUser(user);
 
             // Create new user if not exists
-            return await CreateNewUser(email, response);
+            return await CreateNewUser(email);
         }
 
         public async Task<ResponseMessage<object>> UpdateUserLogin(UserAdd request)
@@ -174,7 +186,7 @@ namespace BookLibrary.Business.AuthenticateAggregate
             );
         }
 
-        private ResponseMessage<UserDto> HandleExistingUser(User user, ResponseMessage<UserDto> response)
+        private ResponseMessage<UserDto> HandleExistingUser(User user)
         {
             if (string.IsNullOrEmpty(user.Password))
             {
@@ -185,23 +197,39 @@ namespace BookLibrary.Business.AuthenticateAggregate
                     user.RegistrationCodeTime = DateTime.Now;
                     _authenticationRepository.InsertOrUpdateAsync(user.UserId, user);
                     //TODO: Send mail with new registration code
-                    response.Message = "User already exists but the registration code was expired. A new code has been sent.";
+                    return new ResponseMessage<UserDto>
+                    {
+                        Data = user.Adapt<UserDto>(),
+                        Success = true,
+                        StatusCode = (int)HttpStatusCode.OK,
+                        Message = "User already exists but the registration code was expired. A new code has been sent."
+                    };
                 }
                 else
                 {
                     //TODO: Send mail with existing registration code
-                    response.Message = "User already exists but has no password. An email with the registration code has been sent.";
+                    return new ResponseMessage<UserDto>
+                    {
+                        Data = user.Adapt<UserDto>(),
+                        Success = true,
+                        StatusCode = (int)HttpStatusCode.OK,
+                        Message = "User already exists but has no password. An email with the registration code has been sent."
+                    };
                 }
-                response.Data = user.Adapt<UserDto>();
             }
             else
             {
-                response.SetErrorMessage("Username/Email already exists.", "Validation Error");
+                return new ResponseMessage<UserDto>
+                {
+                    Data = null,
+                    Success = false,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
+                    Message = "Username/Email already exists."
+                };
             }
-            return response;
         }
 
-        private async Task<ResponseMessage<UserDto>> CreateNewUser(string email, ResponseMessage<UserDto> response)
+        private async Task<ResponseMessage<UserDto>> CreateNewUser(string email)
         {
             // Get user role
             var roleId = _authenticationRepository.GetRole(UserRole.User.ToString()).RoleId;
@@ -217,9 +245,14 @@ namespace BookLibrary.Business.AuthenticateAggregate
 
             var createdUser = await _authenticationRepository.InsertAsync(newUser);
             //TODO: Send welcome mail with registration code
-            response.Data = createdUser.Adapt<UserDto>();
-            response.Message = "Login created successfully";
-            return response;
+
+            return new ResponseMessage<UserDto>
+            {
+                Data = createdUser.Adapt<UserDto>(),
+                Success = true,
+                StatusCode = (int)HttpStatusCode.Created,
+                Message = "Login created successfully"
+            };
         }
 
         private bool IsRegistrationCodeExpired(User user)

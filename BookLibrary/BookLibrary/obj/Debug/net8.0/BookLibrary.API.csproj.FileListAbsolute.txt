@@ -150,3 +150,5 @@ C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibr
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.pdb
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\BookLibrary.API.genruntimeconfig.cache
 C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\obj\Debug\net8.0\ref\BookLibrary.API.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary\bin\Debug\net8.0\Moq.dll

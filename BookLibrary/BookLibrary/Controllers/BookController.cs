@@ -40,12 +40,21 @@ namespace BookLibrary.API.Controllers
         /// <param name="search">The search string to filter books.</param>
         /// <returns>A response message containing a paged list of books.</returns>       
         [HttpGet("GetBooks")]
-        public ResponseMessage<PagedList<BookDto>> GetBooks(int? pageNumber, int? pageSize, string orderBy = "BookId", bool orderDirection = true, string search = "")
+        [AllowAnonymous]
+        public ActionResult GetBooks(int? pageNumber, int? pageSize, string orderBy = "BookId", bool orderDirection = true, string search = "")
         {
-            _logger.LogInformation("Entering GetBooks");
-            var books = _bookService.GetBooks(pageNumber, pageSize, orderBy, orderDirection, search);
-            _logger.LogInformation("Retrieved All Books");
-            return books;
+            try
+            {
+                _logger.LogInformation("Entering GetBooks");
+                var books = _bookService.GetBooks(pageNumber, pageSize, orderBy, orderDirection, search);
+                _logger.LogInformation("Retrieved All Books");
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+           
         }
 
         /// <summary>

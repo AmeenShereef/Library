@@ -53,10 +53,10 @@ namespace BookLibrary.Business.BookAggregate
             };
         }
 
-        public async Task<ResponseMessage<List<BookCopyDto>>> GetAllBookCopy(int bookId)
+        public  ResponseMessage<List<BookCopyDto>> GetAllBookCopy(int bookId)
         {
             // Retrieve all copies of the specified book
-            var books = await _bookCopyRepository.Get(x => x.BookId == bookId).ToListAsync();
+            var books = _bookCopyRepository.Get(x => x.BookId == bookId).ToList();
 
             // Map and return results
             return new ResponseMessage<List<BookCopyDto>>
@@ -225,7 +225,7 @@ namespace BookLibrary.Business.BookAggregate
                 };
 
             // Check if user has already borrowed a copy of this book
-            bool alreadyBorrowed = await _borrowBookRepository.Get(x => x.UserId == userId && x.ReturnDate == null && x.BookCopy.Book.BookId == bookCopy.BookId).AnyAsync();
+            bool alreadyBorrowed =  _borrowBookRepository.Get(x => x.UserId == userId && x.ReturnDate == null && x.BookCopy.Book.BookId == bookCopy.BookId).Any();
             if (alreadyBorrowed)
                 return new ResponseMessage<BorrowedBookDto>
                 {
@@ -286,7 +286,7 @@ namespace BookLibrary.Business.BookAggregate
         public async Task<ResponseMessage<BorrowedBookDto>> ReturnBook(int borrowedBookId)
         {
             // Retrieve borrowed book record
-            var borBook = await _borrowBookRepository.Get(x => x.BorrowedBookId == borrowedBookId).FirstOrDefaultAsync();
+            var borBook = _borrowBookRepository.Get(x => x.BorrowedBookId == borrowedBookId).FirstOrDefault();
             if (borBook == null)
             {
                 return new ResponseMessage<BorrowedBookDto>

@@ -52,7 +52,7 @@ namespace BookLibrary.API.Controllers
         /// <param name="bookId">The ID of the book.</param>
         /// <returns>A response message containing a list of book copies.</returns>
         [HttpPost("GetAllBookCopy/{bookId}")]
-        public Task<ResponseMessage<List<BookCopyDto>>> GetAllBookCopy(int bookId)
+        public ResponseMessage<List<BookCopyDto>> GetAllBookCopy(int bookId)
         {
             _logger.LogInformation("Entering GetAllBookCopy");
             var books = _bookService.GetAllBookCopy(bookId);

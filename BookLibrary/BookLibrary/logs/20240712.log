@@ -1,0 +1,97 @@
+2024-07-12 15:33:34 [Information] Now listening on: https://localhost:7066 
+2024-07-12 15:33:34 [Information] Now listening on: http://localhost:5232 
+2024-07-12 15:33:34 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-12 15:33:34 [Information] Hosting environment: Development 
+2024-07-12 15:33:34 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-12 16:39:37 [Information] Now listening on: https://localhost:7066 
+2024-07-12 16:39:37 [Information] Now listening on: http://localhost:5232 
+2024-07-12 16:39:37 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-12 16:39:37 [Information] Hosting environment: Development 
+2024-07-12 16:39:37 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-12 17:36:52 [Information] Now listening on: https://localhost:7066 
+2024-07-12 17:36:52 [Information] Now listening on: http://localhost:5232 
+2024-07-12 17:36:52 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-12 17:36:52 [Information] Hosting environment: Development 
+2024-07-12 17:36:52 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-12 17:37:02 [Information] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 603), @p1='?' (Size = 14), @p2='?' (Size = 3), @p3='?' (Size = 18), @p4='?' (Size = 35), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-12 17:37:02 [Information] Valid Consumers - localhost 
+2024-07-12 17:37:02 [Information] Referer Value - localhost 
+2024-07-12 17:37:02 [Information] Entering GetBooks 
+2024-07-12 17:37:02 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-12 17:37:02 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-12 17:37:02 [Information] BaseRepository - GetAll - Entering 
+2024-07-12 17:37:02 [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Books" AS "b"
+WHERE "b"."IsActive" 
+2024-07-12 17:37:02 [Warning] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased. 
+2024-07-12 17:37:02 [Information] Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "t"."BookId", "t"."Author", "t"."CreationTime", "t"."CreatorUserId", "t"."Genre", "t"."ISBN", "t"."IsActive", "t"."LastModificationTime", "t"."LastModifierUserId", "t"."PublicationYear", "t"."Title", "t0"."BookCopyId", "t0"."AcquisitionDate", "t0"."BookId", "t0"."CopyNumber", "t0"."CreationTime", "t0"."CreatorUserId", "t0"."IsActive", "t0"."IsAvailable", "t0"."LastModificationTime", "t0"."LastModifierUserId"
+FROM (
+    SELECT "b"."BookId", "b"."Author", "b"."CreationTime", "b"."CreatorUserId", "b"."Genre", "b"."ISBN", "b"."IsActive", "b"."LastModificationTime", "b"."LastModifierUserId", "b"."PublicationYear", "b"."Title"
+    FROM "Books" AS "b"
+    WHERE "b"."IsActive"
+    ORDER BY "b"."BookId"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS "t"
+LEFT JOIN (
+    SELECT "t1"."BookCopyId", "t1"."AcquisitionDate", "t1"."BookId", "t1"."CopyNumber", "t1"."CreationTime", "t1"."CreatorUserId", "t1"."IsActive", "t1"."IsAvailable", "t1"."LastModificationTime", "t1"."LastModifierUserId"
+    FROM (
+        SELECT "b0"."BookCopyId", "b0"."AcquisitionDate", "b0"."BookId", "b0"."CopyNumber", "b0"."CreationTime", "b0"."CreatorUserId", "b0"."IsActive", "b0"."IsAvailable", "b0"."LastModificationTime", "b0"."LastModifierUserId", ROW_NUMBER() OVER(PARTITION BY "b0"."BookId" ORDER BY "b0"."BookCopyId") AS "row"
+        FROM "BookCopys" AS "b0"
+        WHERE "b0"."IsAvailable" AND "b0"."IsActive"
+    ) AS "t1"
+    WHERE "t1"."row" <= 1
+) AS "t0" ON "t"."BookId" = "t0"."BookId"
+ORDER BY "t"."BookId" 
+2024-07-12 17:37:02 [Information] Retrieved All Books 
+2024-07-12 17:37:28 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 603), @p1='?' (Size = 14), @p2='?' (Size = 3), @p3='?' (Size = 18), @p4='?' (Size = 40), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-12 17:37:28 [Information] Valid Consumers - localhost 
+2024-07-12 17:37:28 [Information] Referer Value - localhost 
+2024-07-12 17:37:28 [Information] Entering GetBooks 
+2024-07-12 17:37:28 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-12 17:37:28 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-12 17:37:28 [Information] BaseRepository - GetAll - Entering 
+2024-07-12 17:37:32 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 115), @p3='?' (Size = 18), @p4='?' (Size = 40), @p5='?' (Size = 23), @p6='?' (Size = 3607), @p7='?' (Size = 100), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-12 17:42:51 [Information] Now listening on: https://localhost:7066 
+2024-07-12 17:42:51 [Information] Now listening on: http://localhost:5232 
+2024-07-12 17:42:51 [Information] Application started. Press Ctrl+C to shut down. 
+2024-07-12 17:42:51 [Information] Hosting environment: Development 
+2024-07-12 17:42:51 [Information] Content root path: C:\Users\yasee.H2I_LT_010\source\repos\AmeenShereef\Library\BookLibrary\BookLibrary 
+2024-07-12 17:43:00 [Information] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 603), @p1='?' (Size = 14), @p2='?' (Size = 3), @p3='?' (Size = 18), @p4='?' (Size = 38), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-12 17:43:01 [Information] Valid Consumers - localhost 
+2024-07-12 17:43:01 [Information] Referer Value - localhost 
+2024-07-12 17:43:01 [Information] Entering GetBooks 
+2024-07-12 17:43:01 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-12 17:43:01 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-12 17:43:01 [Information] BaseRepository - GetAll - Entering 
+2024-07-12 17:43:01 [Information] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 212), @p3='?' (Size = 18), @p4='?' (Size = 38), @p5='?' (Size = 16), @p6='?' (Size = 2431), @p7='?' (Size = 96), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
+2024-07-12 17:43:15 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 603), @p1='?' (Size = 14), @p2='?' (Size = 3), @p3='?' (Size = 18), @p4='?' (Size = 38), @p5='?' (Size = 125), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "APILog" ("Headers", "Host", "Method", "Path", "QueryString", "UserAgent", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id"; 
+2024-07-12 17:43:15 [Information] Valid Consumers - localhost 
+2024-07-12 17:43:15 [Information] Referer Value - localhost 
+2024-07-12 17:43:15 [Information] Entering GetBooks 
+2024-07-12 17:43:15 [Information] BaseRepository - GetAll (Paged) - Entering 
+2024-07-12 17:43:15 [Information] BaseRepository - GetAll (Paged with Filters) - Entering 
+2024-07-12 17:43:15 [Information] BaseRepository - GetAll - Entering 
+2024-07-12 17:43:56 [Information] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 212), @p3='?' (Size = 18), @p4='?' (Size = 38), @p5='?' (Size = 16), @p6='?' (Size = 2431), @p7='?' (Size = 96), @p8='?' (Size = 125)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "ExceptionLogs" ("Body", "CreatedOn", "Message", "Path", "QueryString", "Source", "StackTrace", "TargetSite", "UserAgent")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+RETURNING "Id"; 
