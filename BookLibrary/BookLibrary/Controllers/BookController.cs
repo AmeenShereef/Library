@@ -74,7 +74,6 @@ namespace BookLibrary.API.Controllers
         /// <summary>
         /// Retrieves the list of books borrowed by a user.
         /// </summary>
-        /// <param name="userId">The ID of the user.</param>
         /// <param name="isReturned">Flag to indicate whether to retrieve returned or currently borrowed books.</param>
         /// <returns>A response message containing a list of borrowed books.</returns>
         [HttpGet("GetUserBorrowedBook")]

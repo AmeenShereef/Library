@@ -85,7 +85,7 @@ namespace BookLibrary.Tests
 
 
         [Fact]
-        public async Task GetAllBookCopy_WithValidBookId_ReturnsListOfBookCopyDto()
+        public  void GetAllBookCopy_WithValidBookId_ReturnsListOfBookCopyDto()
         {
             // Arrange
             var bookCopies = new List<BookCopy>
@@ -208,7 +208,7 @@ namespace BookLibrary.Tests
             // Assert
             result.Should().NotBeNull();
             result.Data.Should().NotBeNull();
-            result.Data.BorrowedBookId.Should().Be(1);
+            result.Data?.BorrowedBookId.Should().Be(1);
             result.Success.Should().BeTrue();
             result.StatusCode.Should().Be((int)HttpStatusCode.OK);
         }
